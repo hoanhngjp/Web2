@@ -1,0 +1,54 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body{
+    position: relative;
+    width: 100%;
+    min-height: 150vh;
+}
+/*-------------------------------------------------------------------HOME CONTENT-------------------------------------------------------------------*/
+.homeContent{
+    width: 100%;
+}
+
+.bannerCard{
+    display: block;
+    position: relative;
+    padding-top: 56.25%;
+}
+
+.banner{
+    width: 100%;
+}
+
+.bannerCard img{
+    display: block;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    top: 0;
+    left: 0;
+}
+
+.bannerTxt{
+    position: absolute;
+    top: 0;
+    padding-top: 220px;
+    padding-left: 150px;
+    color: #ffffff;
+    
+}
+
+.bannerTxt h2{
+    font-weight: bold;
+    font-size: 40px;
+    text-shadow: 2px 2px#000;
+}
+
+.bannerTxt p{
+    line-height: 25px;
+}
