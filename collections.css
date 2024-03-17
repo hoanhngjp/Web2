@@ -1,0 +1,95 @@
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&display=swap');
+html, body{
+    height: 100%;
+    font-family: 'Quicksand', 'sans-serif';
+}
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+/*-----------------------collections-wrap-------------------------------*/
+.collections-wrap{
+    padding-top: 70px;
+    width: 100%;
+    position: relative;
+}
+/*-----------------------Direct-------------------------------*/
+.direct{
+    width: 100%;
+    background-color: #f5f5f5; /* Màu nền xám */
+}
+.direct-items {
+    display: flex; /* Sử dụng flexbox */
+    flex-direction: row;
+    font-size: 13px;
+    padding-left: 2%;
+    padding-top: 1%;
+    padding-bottom: 1%;
+}
+
+.direct-items a{
+    text-decoration: none;
+    color: #001812;
+}
+
+.direct-items a:hover{
+    color: #518372;
+}
+
+.direct-items p{
+    color: #777777;
+}
+
+.direct-items > * {
+    margin-right: 5px;
+}
+/*-----------------------Collections-content-------------------------------*/
+.collections-content {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    grid-gap: 20px;
+    padding-top: 2%;
+}
+/*-----------------------Menu-------------------------------*/
+.menu-wrap ul{
+    list-style: none;
+}
+
+.menu-wrap a{
+    padding: 5 5 5 5px;
+}
+
+.menu-tree{
+    padding: 10px 0 0 10px;
+}
+
+.menu-item{
+    padding: 5px 0 5px 2%;
+}
+
+.menu-item a{
+    text-decoration: none;
+    color: #001812;
+    font-size: 14px;
+}
+
+.sub-menu{
+    padding: 5px 0 5px 25px;
+    overflow: hidden;
+    display: none;
+}
+
+.sub-menu.active{
+    display: block;
+    max-height: 100%;
+}
+
+.sub-menu-item{
+    padding: 5px 0 5px 0;
+}
+
+.sub-menu-item a{
+    color: #898989;
+}
+
