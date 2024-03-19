@@ -124,7 +124,17 @@ ul.others a{
 }
 
 ul.others li{
+    display: flex;
+    align-items: center;
+    justify-content: center;
     margin: 0 20px;
+    width: 40px;
+    height: 40px;
+    border-radius: 20px;
+}
+
+ul.others li:hover{
+    background-color: rgba(72, 114, 100, 0.1);
 }
 
 .others ion-icon{

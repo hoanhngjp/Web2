@@ -6,15 +6,17 @@
     <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
     <script src="https://kit.fontawesome.com/39b6b90061.js" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="header.css">
-    <link rel="stylesheet" href="footer.css">
-    <link rel="stylesheet" href="collections.css">
+    <link rel="stylesheet" href="css/header.css">
+    <link rel="stylesheet" href="css/footer.css">
+    <link rel="stylesheet" href="css/collections.css">
+    <title>Tất cả sản phẩm</title>
+    <link rel="icon" type="image/x-icon" href="img/footerLogo.webp">
 </head>
 <body>
     <!--------------------------------------------HEADER----------------------------------------------------->
     <header>
         <div class="homeLogo">
-            <a href=""><img src="img/logo.webp" alt=""></a>
+            <a href="home.html"><img src="img/logo.webp" alt=""></a>
         </div>
         <div class="menu">
             <ul>
@@ -94,7 +96,7 @@
         </div>
         <div class="headerOthers">
             <ul class="others">
-                <li><a href=""><ion-icon name="person-circle-outline"></ion-icon></a></li>
+                <li><a href="account/login.html"><ion-icon name="person-circle-outline"></ion-icon></a></li>
                 <li><a href=""><ion-icon name="search-outline"></ion-icon></a></li>
                 <li><a href=""><ion-icon name="bag-outline"></ion-icon></a></li>
             </ul>
@@ -110,146 +112,326 @@
         </div>
         <!--------------------------------------------COLLECTIONS----------------------------------------------------->
         <div class="collections-content">
-        <!--------------------------------------------Collections-MENU----------------------------------------------------->
-        <div class="menu-wrap">
-            <ul class="menu-tree">
-                <li class="menu-item">
-                    <a href="">Bếp <ion-icon name="remove-outline"></ion-icon></a>
-                    <ul class="sub-menu">
-                        <li class="sub-menu-item">
-                            <a href="">Xoong, Nồi, Chảo</a>
+            <!--------------------------------------------Collections-MENU----------------------------------------------------->
+            <div class="menu-wrap">
+                <ul class="menu-tree">
+                    <li class="menu-item">
+                        <a href="">Bếp <ion-icon name="remove-outline"></ion-icon></a>
+                        <ul class="sub-menu">
+                            <li class="sub-menu-item">
+                                <a href="">Xoong, Nồi, Chảo</a>
+                            </li>
+                            <li class="sub-menu-item">
+                                <a href="">Giá, Kệ Đa Năng</a>
+                            </li>
+                            <li class="sub-menu-item">
+                                <a href="">Phụ Kiện Bếp</a>
+                            </li>
+                            <li class="sub-menu-item">
+                                <a href="">Thìa, Đũa</a>
+                            </li>
+                            <li class="sub-menu-item">
+                                <a href="">Bát, Đĩa</a>
+                            </li>
+                            <li class="sub-menu-item">
+                                <a href="">Bình Nước</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="menu-item">
+                        <a href="">Picnic Day</a>
+                    </li>
+                    <li class="menu-item">
+                        <a href="">Cốc, Ly <ion-icon name="remove-outline"></ion-icon></a>
+                        <ul class="sub-menu">
+                            <li class="sub-menu-item">
+                                <a href="">Cốc</a>
+                            </li>
+                            <li class="sub-menu-item">
+                                <a href="">Ly</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="menu-item">
+                        <a href="">Trà Chiều, Cafe <ion-icon name="remove-outline"></ion-icon></a>
+                        <ul class="sub-menu">
+                            <li class="sub-menu-item">
+                                <a href="">Bộ Ấm Trà</a>
+                            </li>
+                            <li class="sub-menu-item">
+                                <a href="">Trà Cụ</a>
+                            </li>
+                            <li class="sub-menu-item">
+                                <a href="">Tea Party</a>
+                            </li>
+                            <li class="sub-menu-item">
+                                <a href="">Cafe Tỉnh Táo</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="menu-item">
+                        <a href="">Thiền Định An Yên <ion-icon name="remove-outline"></ion-icon></a>
+                        <ul class="sub-menu">
+                            <li class="sub-menu-item">
+                                <a href="">Trầm</a>
+                            </li>
+                            <li class="sub-menu-item">
+                                <a href="">Set Đốt Trầm</a>
+                            </li>
+                            <li class="sub-menu-item">
+                                <a href="">Vòng Đá</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="menu-item">
+                        <a href="">Mùi Hương <ion-icon name="remove-outline"></ion-icon></a>
+                        <ul class="sub-menu">
+                            <li class="sub-menu-item">
+                                <a href="">Nến Thơm</a>
+                            </li>
+                            <li class="sub-menu-item">
+                                <a href="">Tinh Dầu, Túi Thơm</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="menu-item">
+                        <a href="">Trang Trí Nhà Cửa <ion-icon name="remove-outline"></ion-icon></a>
+                        <ul class="sub-menu">
+                            <li class="sub-menu-item">
+                                <a href="">Khăn Trải Bàn, Thảm</a>
+                            </li>
+                            <li class="sub-menu-item">
+                                <a href="">Bình Cắm Hoa</a>
+                            </li>
+                            <li class="sub-menu-item">
+                                <a href="">Túi, Giỏ, Hộp Đựng</a>
+                            </li>
+                            <li class="sub-menu-item">
+                                <a href="">Tượng Decor</a>
+                            </li>
+                            <li class="sub-menu-item">
+                                <a href="">Khác</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="menu-item">
+                        <a href="">Đồ Cá Nhân <ion-icon name="remove-outline"></ion-icon></a>
+                        <ul class="sub-menu">
+                            <li class="sub-menu-item">
+                                <a href="">Kẹp Tóc</a>
+                            </li>
+                            <li class="sub-menu-item">
+                                <a href="">Thư Giãn</a>
+                            </li>
+                            <li class="sub-menu-item">
+                                <a href="">Bình Nước</a>
+                            </li>
+                            <li class="sub-menu-item">
+                                <a href="">Túi Tote</a>
+                            </li>
+                            <li class="sub-menu-item">
+                                <a href="">Book Corner</a>
+                            </li>
+                            <li class="sub-menu-item">
+                                <a href="">Warm & Cozy</a>
+                            </li>
+                            <li class="sub-menu-item">
+                                <a href="">Khác</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <script src="js/sub-menu.js"></script>
+                </ul>
+            </div>
+            <!--------------------------------------------COLLECTIONS-ITEMS----------------------------------------------------->
+            <div class="collections-item-wrap">
+                <div class="collections-heading-wrap">
+                    <div class="collections-title">
+                        <h1>Tất cả sản phẩm</h1>
+                    </div>
+                    <div class="selection-wrap">
+                        <select name="order" id="">
+                            <option value="priceIncrease">Giá: Tăng dần</option>
+                            <option value="priceDecrease">Giá: Giảm dần</option>
+                            <option value="nameIncrease">Tên: A - Z</option>
+                            <option value="nameDecrease">Tên: Z - A</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="collections-item">
+                    <div class="item-wrap">
+                        <div class="item-picture">
+                            <a href="">
+                                <img src="img/item-demo-picture.webp" alt="">
+                            </a>
+                        </div>
+                        <div class="item-detail">
+                            <h3>
+                                <a href="">Cốc Thủy Tinh Gia Đình Cún, Mèo</a>
+                            </h3>
+                            <p class="item-price">185,000đ</p>
+                        </div>
+                    </div>
+                    <div class="item-wrap">
+                        <div class="item-picture">
+                            <a href="">
+                                <img src="img/item-demo-picture.webp" alt="">
+                            </a>
+                        </div>
+                        <div class="item-detail">
+                            <h3>
+                                <a href="">Cốc Thủy Tinh Gia Đình Cún, Mèo</a>
+                            </h3>
+                            <p class="item-price">185,000đ</p>
+                        </div>
+                    </div>
+                    <div class="item-wrap">
+                        <div class="item-picture">
+                            <a href="">
+                                <img src="img/item-demo-picture.webp" alt="">
+                            </a>
+                        </div>
+                        <div class="item-detail">
+                            <h3>
+                                <a href="">Cốc Thủy Tinh Gia Đình Cún, Mèo</a>
+                            </h3>
+                            <p class="item-price">185,000đ</p>
+                        </div>
+                    </div>
+                    <div class="item-wrap">
+                        <div class="item-picture">
+                            <a href="">
+                                <img src="img/item-demo-picture.webp" alt="">
+                            </a>
+                        </div>
+                        <div class="item-detail">
+                            <h3>
+                                <a href="">Cốc Thủy Tinh Gia Đình Cún, Mèo</a>
+                            </h3>
+                            <p class="item-price">185,000đ</p>
+                        </div>
+                    </div>
+                    <div class="item-wrap">
+                        <div class="item-picture">
+                            <a href="">
+                                <img src="img/item-demo-picture.webp" alt="">
+                            </a>
+                        </div>
+                        <div class="item-detail">
+                            <h3>
+                                <a href="">Cốc Thủy Tinh Gia Đình Cún, Mèo</a>
+                            </h3>
+                            <p class="item-price">185,000đ</p>
+                        </div>
+                    </div>
+                    <div class="item-wrap">
+                        <div class="item-picture">
+                            <a href="">
+                                <img src="img/item-demo-picture.webp" alt="">
+                            </a>
+                        </div>
+                        <div class="item-detail">
+                            <h3>
+                                <a href="">Cốc Thủy Tinh Gia Đình Cún, Mèo</a>
+                            </h3>
+                            <p class="item-price">185,000đ</p>
+                        </div>
+                    </div>
+                    <div class="item-wrap">
+                        <div class="item-picture">
+                            <a href="">
+                                <img src="img/item-demo-picture.webp" alt="">
+                            </a>
+                        </div>
+                        <div class="item-detail">
+                            <h3>
+                                <a href="">Cốc Thủy Tinh Gia Đình Cún, Mèo</a>
+                            </h3>
+                            <p class="item-price">185,000đ</p>
+                        </div>
+                    </div>
+                    <div class="item-wrap">
+                        <div class="item-picture">
+                            <a href="">
+                                <img src="img/item-demo-picture.webp" alt="">
+                            </a>
+                        </div>
+                        <div class="item-detail">
+                            <h3>
+                                <a href="">Cốc Thủy Tinh Gia Đình Cún, Mèo</a>
+                            </h3>
+                            <p class="item-price">185,000đ</p>
+                        </div>
+                    </div>
+                    <div class="item-wrap">
+                        <div class="item-picture">
+                            <a href="">
+                                <img src="img/item-demo-picture.webp" alt="">
+                            </a>
+                        </div>
+                        <div class="item-detail">
+                            <h3>
+                                <a href="">Cốc Thủy Tinh Gia Đình Cún, Mèo</a>
+                            </h3>
+                            <p class="item-price">185,000đ</p>
+                        </div>
+                    </div>
+                    <div class="item-wrap">
+                        <div class="item-picture">
+                            <a href="">
+                                <img src="img/item-demo-picture.webp" alt="">
+                            </a>
+                        </div>
+                        <div class="item-detail">
+                            <h3>
+                                <a href="">Cốc Thủy Tinh Gia Đình Cún, Mèo</a>
+                            </h3>
+                            <p class="item-price">185,000đ</p>
+                        </div>
+                    </div>
+                    <div class="item-wrap">
+                        <div class="item-picture">
+                            <a href="">
+                                <img src="img/item-demo-picture.webp" alt="">
+                            </a>
+                        </div>
+                        <div class="item-detail">
+                            <h3>
+                                <a href="">Cốc Thủy Tinh Gia Đình Cún, Mèo</a>
+                            </h3>
+                            <p class="item-price">185,000đ</p>
+                        </div>
+                    </div>
+                    <div class="item-wrap">
+                        <div class="item-picture">
+                            <a href="">
+                                <img src="img/item-demo-picture.webp" alt="">
+                            </a>
+                        </div>
+                        <div class="item-detail">
+                            <h3>
+                                <a href="">Cốc Thủy Tinh Gia Đình Cún, Mèo</a>
+                            </h3>
+                            <p class="item-price">185,000đ</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="collections-footer-wrap">
+                    <a href="" class="prevPage"><i class="fa-solid fa-arrow-left-long"></i></a>
+                    <ul class="page-list">
+                        <li>
+                            <a href="">1</a>
                         </li>
-                        <li class="sub-menu-item">
-                            <a href="">Giá, Kệ Đa Năng</a>
+                        <li>
+                            <a href="">2</a>
                         </li>
-                        <li class="sub-menu-item">
-                            <a href="">Phụ Kiện Bếp</a>
-                        </li>
-                        <li class="sub-menu-item">
-                            <a href="">Thìa, Đũa</a>
-                        </li>
-                        <li class="sub-menu-item">
-                            <a href="">Bát, Đĩa</a>
-                        </li>
-                        <li class="sub-menu-item">
-                            <a href="">Bình Nước</a>
+                        <li>
+                            <a href="">3</a>
                         </li>
                     </ul>
-                </li>
-                <li class="menu-item">
-                    <a href="">Picnic Day</a>
-                </li>
-                <li class="menu-item">
-                    <a href="">Cốc, Ly <ion-icon name="remove-outline"></ion-icon></a>
-                    <ul class="sub-menu">
-                        <li class="sub-menu-item">
-                            <a href="">Cốc</a>
-                        </li>
-                        <li class="sub-menu-item">
-                            <a href="">Ly</a>
-                        </li>
-                    </ul>
-                </li>
-                <li class="menu-item">
-                    <a href="">Trà Chiều, Cafe <ion-icon name="remove-outline"></ion-icon></a>
-                    <ul class="sub-menu">
-                        <li class="sub-menu-item">
-                            <a href="">Bộ Ấm Trà</a>
-                        </li>
-                        <li class="sub-menu-item">
-                            <a href="">Trà Cụ</a>
-                        </li>
-                        <li class="sub-menu-item">
-                            <a href="">Tea Party</a>
-                        </li>
-                        <li class="sub-menu-item">
-                            <a href="">Cafe Tỉnh Táo</a>
-                        </li>
-                    </ul>
-                </li>
-                <li class="menu-item">
-                    <a href="">Thiền Định An Yên <ion-icon name="remove-outline"></ion-icon></a>
-                    <ul class="sub-menu">
-                        <li class="sub-menu-item">
-                            <a href="">Trầm</a>
-                        </li>
-                        <li class="sub-menu-item">
-                            <a href="">Set Đốt Trầm</a>
-                        </li>
-                        <li class="sub-menu-item">
-                            <a href="">Vòng Đá</a>
-                        </li>
-                    </ul>
-                </li>
-                <li class="menu-item">
-                    <a href="">Mùi Hương <ion-icon name="remove-outline"></ion-icon></a>
-                    <ul class="sub-menu">
-                        <li class="sub-menu-item">
-                            <a href="">Nến Thơm</a>
-                        </li>
-                        <li class="sub-menu-item">
-                            <a href="">Tinh Dầu, Túi Thơm</a>
-                        </li>
-                    </ul>
-                </li>
-                <li class="menu-item">
-                    <a href="">Trang Trí Nhà Cửa <ion-icon name="remove-outline"></ion-icon></a>
-                    <ul class="sub-menu">
-                        <li class="sub-menu-item">
-                            <a href="">Khăn Trải Bàn, Thảm</a>
-                        </li>
-                        <li class="sub-menu-item">
-                            <a href="">Bình Cắm Hoa</a>
-                        </li>
-                        <li class="sub-menu-item">
-                            <a href="">Túi, Giỏ, Hộp Đựng</a>
-                        </li>
-                        <li class="sub-menu-item">
-                            <a href="">Tượng Decor</a>
-                        </li>
-                        <li class="sub-menu-item">
-                            <a href="">Khác</a>
-                        </li>
-                    </ul>
-                </li>
-                <li class="menu-item">
-                    <a href="">Đồ Cá Nhân <ion-icon name="remove-outline"></ion-icon></a>
-                    <ul class="sub-menu">
-                        <li class="sub-menu-item">
-                            <a href="">Kẹp Tóc</a>
-                        </li>
-                        <li class="sub-menu-item">
-                            <a href="">Thư Giãn</a>
-                        </li>
-                        <li class="sub-menu-item">
-                            <a href="">Bình Nước</a>
-                        </li>
-                        <li class="sub-menu-item">
-                            <a href="">Túi Tote</a>
-                        </li>
-                        <li class="sub-menu-item">
-                            <a href="">Book Corner</a>
-                        </li>
-                        <li class="sub-menu-item">
-                            <a href="">Warm & Cozy</a>
-                        </li>
-                        <li class="sub-menu-item">
-                            <a href="">Khác</a>
-                        </li>
-                    </ul>
-                </li>
-                <script src="js/sub-menu.js"></script>
-            </ul>
-        </div>
-        <!--------------------------------------------CATEGORY-CONTENT----------------------------------------------------->
-        <div class="collections-item">
-            <div class="collections-heading-wrap">
-                <div class="collections-title">
-                    <h1>Tất cả sản phẩm</h1>
-
+                    <a href="" class="nextPage"><i class="fa-solid fa-arrow-right-long"></i></a>
                 </div>
             </div>
-        </div>
         </div>
 
     </div>

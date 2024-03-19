@@ -123,7 +123,8 @@ html, body{
 }
 
 .category-item-img img {
-    max-width: 100%; /* Đảm bảo hình ảnh không vượt quá kích thước của phần tử cha */
+    width: 100%; /* Đảm bảo hình ảnh không vượt quá kích thước của phần tử cha */
+    border-radius: 24px;
 }
 
 .category-item span {

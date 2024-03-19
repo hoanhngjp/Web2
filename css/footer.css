@@ -1,4 +1,5 @@
 footer {
+    border-top: 1px solid #e7e7e7;
     background-color: #ffffff; /* Màu nền của footer */
     padding: 20px 40px; /* Khoảng cách giữa các phần tử trong footer */
     width: 100%; /* Chiều rộng 100% của footer */
@@ -91,6 +92,7 @@ footer {
     flex: 1;
     align-items: center;
     justify-content: center;
+    cursor: pointer;
 }
 
 .wrapSocial ion-icon{
