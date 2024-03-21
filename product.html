@@ -1,0 +1,700 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+    <script src="https://kit.fontawesome.com/39b6b90061.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="css/header.css">
+    <link rel="stylesheet" href="css/footer.css">
+    <link rel="stylesheet" href="css/product.css">
+    <link rel="stylesheet" href="css/cart-search.css">
+    <title>Tài khoản</title>
+    <link rel="icon" type="image/x-icon" href="../img/footerLogo.webp">
+    <script src="js/showCartSearch.js" defer></script>
+</head>
+<body>
+    <div class="main-body">
+        <!--------------------------------------------HEADER----------------------------------------------------->
+        <header>
+            <div class="homeLogo">
+                <a href="home.html"><img src="img/logo.webp" alt=""></a>
+            </div>
+            <div class="menu">
+            <ul>
+                <li><a href="home.html">Trang chủ</a></li>
+                <li>
+                    <a href="collections.html">Sản phẩm <ion-icon name="chevron-down-outline"></ion-icon></a>
+                    <ul class="dropDown">
+                        <li>
+                            <a href="">Bếp <ion-icon name="chevron-forward-outline"></ion-icon></a>
+                            <ul class="subMenu">
+                                <li><a href="">Xoong, Nồi, Chảo</a></li>
+                                <li><a href="">Giá, Kệ Đa Năng</a></li>
+                                <li><a href="">Phụ Kiện Bếp</a></li>
+                                <li><a href="">Thìa, Đũa</a></li>
+                                <li><a href="">Bát, Đĩa</a></li>
+                                <li><a href="">Bình Nước</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="">Picnic Day</a></li>
+                        <li>
+                            <a href="">Cốc, Ly <ion-icon name="chevron-forward-outline"></ion-icon></a>
+                            <ul class="subMenu">
+                                <li><a href="">Cốc</a></li>
+                                <li><a href="">Ly</a></li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="">Trà chiều, Cafe <ion-icon name="chevron-forward-outline"></ion-icon></a>
+                            <ul class="subMenu">
+                                <li><a href="">Bộ Ấm Trà</a></li>
+                                <li><a href="">Trà Cụ</a></li>
+                                <li><a href="">Tea Party</a></li>
+                                <li><a href="">Cafe Tỉnh Táo</a></li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="">Thiền Định An Yên <ion-icon name="chevron-forward-outline"></ion-icon></a>
+                            <ul class="subMenu">
+                                <li><a href="">Trầm</a></li>
+                                <li><a href="">Set Đốt Trầm</a></li>
+                                <li><a href="">Vòng, Đá</a></li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="">Mùi Hương <ion-icon name="chevron-forward-outline"></ion-icon></a>
+                            <ul class="subMenu">
+                                <li><a href="">Nến Thơm</a></li>
+                                <li><a href="">Tinh Dầu, Túi Thơm</a></li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="">Trang Trí Nhà Cửa <ion-icon name="chevron-forward-outline"></ion-icon></a>
+                            <ul class="subMenu">
+                                <li><a href="">Khăn Trải Bàn, Thảm</a></li>
+                                <li><a href="">Bình Cắm Hoa</a></li>
+                                <li><a href="">Túi, Giỏ, Hộp Đựng</a></li>
+                                <li><a href="">Tượng Decor</a></li>
+                                <li><a href="">Khác</a></li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="">Đồ Cá Nhân <ion-icon name="chevron-forward-outline"></ion-icon></a>
+                            <ul class="subMenu">
+                                <li><a href="">Kẹp Tóc</a></li>
+                                <li><a href="">Thư Giãn</a></li>
+                                <li><a href="">Bình Nước</a></li>
+                                <li><a href="">Túi Tote</a></li>
+                                <li><a href="">Book Corner</a></li>
+                                <li><a href="">Warm & Cozy</a></li>
+                                <li><a href="">Khác</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+                <li><a href="">Về A Little Leaf</a></li>
+            </ul>
+            </div>
+            <div class="headerOthers">
+                <ul class="others">
+                    <li><a href="account/login.html"><ion-icon name="person-circle-outline"></ion-icon></a></li>
+                    <li><a href="" id="open-site-search"><ion-icon name="search-outline"></ion-icon></a></li>
+                    <li><a href="" id="open-site-cart"><ion-icon name="bag-outline"></ion-icon></a></li>
+                </ul>
+            </div>
+        </header>
+        <!--------------------------------------------PRODUCT----------------------------------------------------->
+        <div class="productDetail-page">
+        <div class="main-wrap">
+            <div class="nav-header-wrap">
+                <div class="nav-header">
+                    <ol>
+                        <li>
+                            <a href="">
+                                <span>Trang chủ</span>
+                            </a>
+                            <meta itemprop="position" content="1">
+                        </li>
+                        <li>
+                            <a href="">
+                                <span>Đồ Cá Nhân</span>
+                            </a>
+                            <meta itemprop="position" content="2">
+                        </li>
+                        <li class="active">
+                            <span>
+                                <span>Bàn Phím Hoàng Tử Bé Giao Ước Hoa Hồng</span>
+                            </span>
+                            <meta itemprop="position" content="3">
+                        </li>
+                    </ol>
+                </div>
+            </div>
+            <div class="product-detail-wrap">
+                <div class="product-detail-2-wrap">
+                    <div class="product-detail-main">
+                        <div class="product-content-img">
+                            <div class="product-gallery">
+                                <div class="product-gallery-container">
+                                    <div class="product-gallery-thumbs">
+                                        <div class="product-gallery-thumb .active">
+                                            <a href="#" class="thumb-placeholder">
+                                                <img src="img/product-detail/product-detail-img-1.webp" alt="">
+                                            </a>
+                                        </div>
+                                        <div class="product-gallery-thumb">
+                                            <a href="#" class="thumb-placeholder">
+                                                <img src="img/product-detail/product-detail-img-2.webp" alt="">
+                                            </a>
+                                        </div>
+                                        <div class="product-gallery-thumb">
+                                            <a href="#" class="thumb-placeholder">
+                                                <img src="img/product-detail/product-detail-img-3.webp" alt="">
+                                            </a>
+                                        </div>
+                                        <div class="product-gallery-thumb">
+                                            <a href="#" class="thumb-placeholder">
+                                                <img src="img/product-detail/product-detail-img-4.webp" alt="">
+                                            </a>
+                                        </div>
+                                        <div class="product-gallery-thumb">
+                                            <a href="#" class="thumb-placeholder">
+                                                <img src="img/product-detail/product-detail-img-5.webp" alt="">
+                                            </a>
+                                        </div>
+                                        <div class="product-gallery-thumb">
+                                            <a href="#" class="thumb-placeholder">
+                                                <img src="img/product-detail/product-detail-img-6.webp" alt="">
+                                            </a>
+                                        </div>
+                                        <div class="product-gallery-thumb">
+                                            <a href="#" class="thumb-placeholder">
+                                                <img src="img/product-detail/product-detail-img-7.webp" alt="">
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="product-image-detail">
+                                    <div class="product-image-wrap">
+                                        <img class="product-img-feature" src="img/product-detail/product-detail-img-1.webp" alt="">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="product-content-desc">
+                            <div class="product-title">
+                                <h1>Bàn Phím Hoàng Tử Bé Giao Ước Hoa Hồng</h1>
+                                <span id="pro-sku">SKU: BPHTBGUHH-1</span>
+                            </div>
+                             <div class="product-price">
+                                <span class="pro-price">5,350,000</span>
+                             </div>
+                             <form class="form-add-item" action="">
+                                <div class="selector-actions">
+                                    <div class="quatity-area">
+                                        <input id="minusBtn" class="qty-btn" type="button" value="-">
+                                        <input type="text" id="quatity" class="quantity-selector" name="quatity" value="1" min="1">
+                                        <input id="plusBtn" class="qty-btn" type="button" value="+">
+                                    </div>
+                                    <div class="wrap-addcart">
+                                        <button type="button" id="add-to-cart" class="addToCartProduct">Thêm vào giỏ</button>
+                                    </div>
+                                </div>
+                             </form>
+                             <div class="product-description">
+                                <div class="title">
+                                    <h2>Mô tả</h2>
+                                </div>
+                                <div class="description-content">
+                                    <div class="description-productdetail">
+                                        <em>
+                                            "Nếu bạn đã dành trọn thời gian để chăm sóc một đóa hồng, thì đóa hồng đó sẽ trở nên vô cùng quan trọng với bạn"
+                                        </em>
+                                        <br>
+                                        <br>
+                                        - Được lấy cảm hứng từ cuốn tiểu thuyết " Hoàng Tử Bé", bàn phím có thể sử dụng với máy tính, máy tính bảng, điện thoại 
+                                        <br>
+                                        - Tương thích với các hệ điều hành khác nhau (Windows/ macOS/ iOS/ Android)
+                                        <br>
+                                        - Loại bàn phím: bàn phím cơ
+                                        <br>
+                                        - Gồm 3 chế độ kết nối:
+                                        <br>
+                                        + Bluetooth 5.1
+                                        <br>
+                                        + 2.4 GHz
+                                        <br>
+                                        + Dây cắm: Type-C
+                                        <br>
+                                        - Tặng 1 Keycap kim loại kỉ niệm Hoàng Tử Bé
+                                        <br>
+                                        - Thời lượng pin 4000mAh
+                                        <br>
+                                        - Phím nhỏ chất liệu PBT mang lại cảm giác tinh tế
+                                        <br>
+                                        - Switch có thể thay thế theo ý muốn
+                                        <br>
+                                        - Chất liệu: Hợp kim nhôm bền bỉ
+                                        <br>
+                                        - Kích Thước: 37,2x12,35x4,2 cm (DxRxC)
+                                        <br>
+                                        - Số phím:100 phím
+                                        <br>
+                                        - Sản phẩm gồm: Thân bàn phím, tấm che bụi, cáp dữ liệu (1.5m), đầu thu 2.4GHz, bộ kéo phím, bộ kéo trục, sách hướng dẫn, phiếu bảo hành, móc khóa, keycap kim loại kỷ niệm, thiệp kỷ niệm hoàng tử bé
+                                        <p>
+                                            - Giá ord:
+                                            <br>
+                                            + Có đèn: 5350k
+                                            <br>
+                                            + Không đèn: 4550k
+                                        </p>
+                                    </div>
+                                </div>
+                             </div>
+                        </div>
+                    </div>
+                    <div class="listProduct-related">
+                        <div class="heading-title">
+                            <h2>Sản phẩm liên quan</h2>
+                        </div>
+                        <div class="content-product-list">
+                            <div class="pro-loop">
+                                <div class="product-block">
+                                    <div class="product-img">
+                                        <div class="sold-out">
+                                            <span>Hết hàng</span>
+                                        </div>
+                                        <a href="">
+                                            <picture>
+                                                <img src="img/product-related/product-related-demo.jpg" alt="">
+                                            </picture>
+                                        </a>
+                                    </div>
+                                    <div class="product-detail">
+                                        <div class="box-proDetail">
+                                            <h3 class="pro-name">
+                                                <a href="">Balo Vải Mèo Neko</a>
+                                            </h3>
+                                            <div class="box-proPrice">
+                                                <p class="pro-pice">
+                                                    <span>450,000đ</span>
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="pro-loop">
+                                <div class="product-block">
+                                    <div class="product-img">
+                                        <div class="sold-out">
+                                            <span>Hết hàng</span>
+                                        </div>
+                                        <a href="">
+                                            <picture>
+                                                <img src="img/product-related/product-related-demo.jpg" alt="">
+                                            </picture>
+                                        </a>
+                                    </div>
+                                    <div class="product-detail">
+                                        <div class="box-proDetail">
+                                            <h3 class="pro-name">
+                                                <a href="">Balo Vải Mèo Neko</a>
+                                            </h3>
+                                            <div class="box-proPrice">
+                                                <p class="pro-pice">
+                                                    <span>450,000đ</span>
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="pro-loop">
+                                <div class="product-block">
+                                    <div class="product-img">
+                                        <div class="sold-out">
+                                            <span>Hết hàng</span>
+                                        </div>
+                                        <a href="">
+                                            <picture>
+                                                <img src="img/product-related/product-related-demo.jpg" alt="">
+                                            </picture>
+                                        </a>
+                                    </div>
+                                    <div class="product-detail">
+                                        <div class="box-proDetail">
+                                            <h3 class="pro-name">
+                                                <a href="">Balo Vải Mèo Neko</a>
+                                            </h3>
+                                            <div class="box-proPrice">
+                                                <p class="pro-pice">
+                                                    <span>450,000đ</span>
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="pro-loop">
+                                <div class="product-block">
+                                    <div class="product-img">
+                                        <div class="sold-out">
+                                            <span>Hết hàng</span>
+                                        </div>
+                                        <a href="">
+                                            <picture>
+                                                <img src="img/product-related/product-related-demo.jpg" alt="">
+                                            </picture>
+                                        </a>
+                                    </div>
+                                    <div class="product-detail">
+                                        <div class="box-proDetail">
+                                            <h3 class="pro-name">
+                                                <a href="">Balo Vải Mèo Neko</a>
+                                            </h3>
+                                            <div class="box-proPrice">
+                                                <p class="pro-pice">
+                                                    <span>450,000đ</span>
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="pro-loop">
+                                <div class="product-block">
+                                    <div class="product-img">
+                                        <div class="sold-out">
+                                            <span>Hết hàng</span>
+                                        </div>
+                                        <a href="">
+                                            <picture>
+                                                <img src="img/product-related/product-related-demo.jpg" alt="">
+                                            </picture>
+                                        </a>
+                                    </div>
+                                    <div class="product-detail">
+                                        <div class="box-proDetail">
+                                            <h3 class="pro-name">
+                                                <a href="">Balo Vải Mèo Neko</a>
+                                            </h3>
+                                            <div class="box-proPrice">
+                                                <p class="pro-pice">
+                                                    <span>450,000đ</span>
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="pro-loop">
+                                <div class="product-block">
+                                    <div class="product-img">
+                                        <div class="sold-out">
+                                            <span>Hết hàng</span>
+                                        </div>
+                                        <a href="">
+                                            <picture>
+                                                <img src="img/product-related/product-related-demo.jpg" alt="">
+                                            </picture>
+                                        </a>
+                                    </div>
+                                    <div class="product-detail">
+                                        <div class="box-proDetail">
+                                            <h3 class="pro-name">
+                                                <a href="">Balo Vải Mèo Neko</a>
+                                            </h3>
+                                            <div class="box-proPrice">
+                                                <p class="pro-pice">
+                                                    <span>450,000đ</span>
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="pro-loop">
+                                <div class="product-block">
+                                    <div class="product-img">
+                                        <div class="sold-out">
+                                            <span>Hết hàng</span>
+                                        </div>
+                                        <a href="">
+                                            <picture>
+                                                <img src="img/product-related/product-related-demo.jpg" alt="">
+                                            </picture>
+                                        </a>
+                                    </div>
+                                    <div class="product-detail">
+                                        <div class="box-proDetail">
+                                            <h3 class="pro-name">
+                                                <a href="">Balo Vải Mèo Neko</a>
+                                            </h3>
+                                            <div class="box-proPrice">
+                                                <p class="pro-pice">
+                                                    <span>450,000đ</span>
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="pro-loop">
+                                <div class="product-block">
+                                    <div class="product-img">
+                                        <div class="sold-out">
+                                            <span>Hết hàng</span>
+                                        </div>
+                                        <a href="">
+                                            <picture>
+                                                <img src="img/product-related/product-related-demo.jpg" alt="">
+                                            </picture>
+                                        </a>
+                                    </div>
+                                    <div class="product-detail">
+                                        <div class="box-proDetail">
+                                            <h3 class="pro-name">
+                                                <a href="">Balo Vải Mèo Neko</a>
+                                            </h3>
+                                            <div class="box-proPrice">
+                                                <p class="pro-pice">
+                                                    <span>450,000đ</span>
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="pro-loop">
+                                <div class="product-block">
+                                    <div class="product-img">
+                                        <div class="sold-out">
+                                            <span>Hết hàng</span>
+                                        </div>
+                                        <a href="">
+                                            <picture>
+                                                <img src="img/product-related/product-related-demo.jpg" alt="">
+                                            </picture>
+                                        </a>
+                                    </div>
+                                    <div class="product-detail">
+                                        <div class="box-proDetail">
+                                            <h3 class="pro-name">
+                                                <a href="">Balo Vải Mèo Neko</a>
+                                            </h3>
+                                            <div class="box-proPrice">
+                                                <p class="pro-pice">
+                                                    <span>450,000đ</span>
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="pro-loop">
+                                <div class="product-block">
+                                    <div class="product-img">
+                                        <div class="sold-out">
+                                            <span>Hết hàng</span>
+                                        </div>
+                                        <a href="">
+                                            <picture>
+                                                <img src="img/product-related/product-related-demo.jpg" alt="">
+                                            </picture>
+                                        </a>
+                                    </div>
+                                    <div class="product-detail">
+                                        <div class="box-proDetail">
+                                            <h3 class="pro-name">
+                                                <a href="">Balo Vải Mèo Neko</a>
+                                            </h3>
+                                            <div class="box-proPrice">
+                                                <p class="pro-pice">
+                                                    <span>450,000đ</span>
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </div>
+        <!--------------------------------------------FOOTER----------------------------------------------------->
+        <footer>
+            <div class="footerWrap">
+                <div class="mainFooter">
+                    <div class="col">
+                        <div class="footer-contentWrap">
+                            <h4 class="footer-title">Giới thiệu</h4>
+                            <div class="footer-content">
+                                <p>A Little Leaf Tiệm tạp hóa của Tình yêu: dành cho những góc bạn yêu ở nơi được gọi là "Nhà"</p>
+                            </div>
+                            <div class="footerLogo">
+                                <img src="img/footerLogo.webp" alt="">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col">
+                        <div class="footer-contentWrap">
+                            <h4 class="footer-title">Liên kết</h4>
+                            <div class="footer-content">
+                                <ul>
+                                    <li class="items">
+                                        <a href="">Tìm kiếm</a>
+                                    </li>
+                                    <li class="items">
+                                        <a href="">Giới thiệu</a>
+                                    </li>
+                                    <li class="items">
+                                        <a href="">Chính sách đổi trả</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                
+                    <div class="col">
+                        <div class="footer-contentWrap">
+                            <h4 class="footer-title">Showroom</h4>
+                            <div class="footer-content">
+                                <ul>
+                                    <li class="contact">
+                                        <p><ion-icon name="location-outline"></ion-icon> 212/A51 Nguyễn Trãi, P. Nguyễn Cư Trinh, Quận 1</p>
+                                    </li>
+                                    <li class="contact">
+                                        <p><ion-icon name="call-outline"></ion-icon> 098.873.55.00</p>
+                                    </li>
+                                    <li class="contact">
+                                        <p><ion-icon name="mail-outline"></ion-icon> alittleleaf.homedecor@gmail.com</p>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col">
+                        <div class="footer-contentWrap">
+                            <h4 class="footer-title">Mạng xã hội</h4>
+                            <div class="footer-content">
+                                <div class="wrapSocial">
+                                    <ion-icon name="logo-facebook"></ion-icon>
+                                </div>
+                                <div class="wrapSocial">
+                                    <ion-icon name="logo-instagram"></ion-icon>
+                                </div>
+                                <div class="wrapSocial">
+                                    <ion-icon name="logo-tiktok"></ion-icon>
+                                </div>
+                                <div class="wrapSocial">
+                                    <ion-icon name="logo-youtube"></ion-icon>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="footerBottom">
+                    <p>Copyright © 2024 A Little Leaf. Powered by Haravan</p>
+                </div>
+            </div>
+        </footer>
+    </div>
+    <div id="site-nav" class="site-nav">
+        <div id="site-cart" class="site-nav-container">
+            <div class="site-nav-container-last">
+                <p class="title"Giỏ hàng></p>
+                <div class="cart-view">
+                </div>
+            </div>
+        </div>
+        <div id="site-search" class="site-nav-container">
+            <div class="site-nav-container-last">
+                <p class="title">Tìm kiếm</p>
+                <div class="search-box-wrap">
+                    <form class="searchForm" action="">
+                        <div class="search-inner">
+                            <input type="text" class="searchInput" size="20" placeholder="Tìm kiếm sản phẩm">
+                        </div>
+                        <button class="btn-search">
+                            <ion-icon name="search-outline"></ion-icon>
+                        </button>
+                    </form>
+                    <div class="result-wrap">
+                        <div class="result-content">
+                            <div class="item-ult">
+                                <div class="thumbs">
+                                    <a href="">
+                                        <img src="img/demo-result/demo-result.jpg" alt="">
+                                    </a>
+                                </div>
+                                <div class="title">
+                                    <a href="">Vòng An</a>
+                                    <p class="f-initial">193,000đ</p>
+                                </div>
+                            </div>
+                            <div class="item-ult">
+                                <div class="thumbs">
+                                    <a href="">
+                                        <img src="img/demo-result/demo-result.jpg" alt="">
+                                    </a>
+                                </div>
+                                <div class="title">
+                                    <a href="">Vòng An</a>
+                                    <p class="f-initial">193,000đ</p>
+                                </div>
+                            </div>
+                            <div class="item-ult">
+                                <div class="thumbs">
+                                    <a href="">
+                                        <img src="img/demo-result/demo-result.jpg" alt="">
+                                    </a>
+                                </div>
+                                <div class="title">
+                                    <a href="">Vòng An</a>
+                                    <p class="f-initial">193,000đ</p>
+                                </div>
+                            </div>
+                            <div class="item-ult">
+                                <div class="thumbs">
+                                    <a href="">
+                                        <img src="img/demo-result/demo-result.jpg" alt="">
+                                    </a>
+                                </div>
+                                <div class="title">
+                                    <a href="">Vòng An</a>
+                                    <p class="f-initial">193,000đ</p>
+                                </div>
+                            </div>
+                            <div class="item-ult">
+                                <div class="thumbs">
+                                    <a href="">
+                                        <img src="img/demo-result/demo-result.jpg" alt="">
+                                    </a>
+                                </div>
+                                <div class="title">
+                                    <a href="">Vòng An</a>
+                                    <p class="f-initial">193,000đ</p>
+                                </div>
+                            </div>
+                            <div class="resultMore">
+                                <a href="">Xem thêm 193 sản phẩm</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <button id="site-close-handle" class="site-close-handle">
+            <span class="close">
+                <ion-icon name="close-outline"></ion-icon>
+        </button>
+    </div>
+</body>
+</html>

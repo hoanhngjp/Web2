@@ -6,22 +6,26 @@
     <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
     <script src="https://kit.fontawesome.com/39b6b90061.js" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="../css/header.css">
-    <link rel="stylesheet" href="../css/footer.css">
+    <link rel="stylesheet" href="css/header.css">
+    <link rel="stylesheet" href="css/footer.css">
+    <link rel="stylesheet" href="css/account.css">
+    <link rel="stylesheet" href="css/cart-search.css">
     <title>Tài khoản</title>
     <link rel="icon" type="image/x-icon" href="../img/footerLogo.webp">
+    <script src="js/showCartSearch.js" defer></script>
 </head>
 <body>
-    <!--------------------------------------------HEADER----------------------------------------------------->
-    <header>
-        <div class="homeLogo">
-            <a href="../home.html"><img src="../img/logo.webp" alt=""></a>
-        </div>
-        <div class="menu">
+    <div class="main-body">
+        <!--------------------------------------------HEADER----------------------------------------------------->
+        <header>
+            <div class="homeLogo">
+                <a href="home.html"><img src="img/logo.webp" alt=""></a>
+            </div>
+            <div class="menu">
             <ul>
-                <li><a href="../home.html">Trang chủ</a></li>
+                <li><a href="home.html">Trang chủ</a></li>
                 <li>
-                    <a href="../collections.html">Sản phẩm <ion-icon name="chevron-down-outline"></ion-icon></a>
+                    <a href="collections.html">Sản phẩm <ion-icon name="chevron-down-outline"></ion-icon></a>
                     <ul class="dropDown">
                         <li>
                             <a href="">Bếp <ion-icon name="chevron-forward-outline"></ion-icon></a>
@@ -92,21 +96,21 @@
                 </li>
                 <li><a href="">Về A Little Leaf</a></li>
             </ul>
-        </div>
-        <div class="headerOthers">
-            <ul class="others">
-                <li><a href="/account/login.html"><ion-icon name="person-circle-outline"></ion-icon></a></li>
-                <li><a href=""><ion-icon name="search-outline"></ion-icon></a></li>
-                <li><a href=""><ion-icon name="bag-outline"></ion-icon></a></li>
-            </ul>
-        </div>
-    </header>
-    <!--------------------------------------------LAYOUT-ACCOUNT----------------------------------------------------->
-    <div class="layout-account">
+            </div>
+            <div class="headerOthers">
+                <ul class="others">
+                    <li><a href="account/login.html"><ion-icon name="person-circle-outline"></ion-icon></a></li>
+                    <li><a href="" id="open-site-search"><ion-icon name="search-outline"></ion-icon></a></li>
+                    <li><a href="" id="open-site-cart"><ion-icon name="bag-outline"></ion-icon></a></li>
+                </ul>
+            </div>
+        </header>
+        <!--------------------------------------------LAYOUT-ACCOUNT----------------------------------------------------->
+        <div class="layout-account">
         <div class="account-header">
             <h1>Tài khoản của bạn</h1>
         </div>
-        <div class="account-countent">
+        <div class="account-content">
             <div class="row">
                 <div class="sidebar-account">
                     <div class="AccountSidebar">
@@ -114,7 +118,9 @@
                         <div class="account-content">
                             <div class="account-list">
                                 <ul>
-                                    <li><a href="">Thông tin tài khoản</a></li>
+                                    <li>
+                                        <a href="">Thông tin tài khoản</a>
+                                    </li>
                                     <li><a href="">Danh sách địa chỉ</a></li>
                                     <li><a href="">Đăng xuất</a></li>
                                 </ul>
@@ -122,111 +128,225 @@
                         </div>
                     </div>
                 </div>
-                <div class="row">
-                    <div class="customer-sidebar">
-                        <p class="title-detail">Thông tin tài khoản</p>
-                        <h2 class="accouont-name">La Hoành Nghiệp</h2>
-                        <p class="account-email">hoanhnghiep2704@gmail.com</p>
-                        <div class="address">
-                            <a id="view-address" href="">Xem địa chỉ</a>
+                <div class="customer-sidebar-wrap">
+                    <div class="row">
+                        <div class="customer-sidebar">
+                            <p class="title-detail">Thông tin tài khoản</p>
+                            <h2 class="account-name">La Hoành Nghiệp</h2>
+                            <p class="account-email">hoanhnghiep2704@gmail.com</p>
+                            <div class="address">
+                                <a id="view-address" href="">Xem địa chỉ</a>
+                            </div>
                         </div>
-                    </div>
-                    <div class="customer-table-bg">
-                        <p class="title-detail"> Danh sách đơn hàng mới nhất </p>
-                        <div class="table-wrap">
-                            <table class="table">
-                                <thead>
-                                    <tr>Mã đơn hàng</tr>
-                                    <tr>Ngày đặt</tr>
-                                    <tr>Thành tiền</tr>
-                                    <tr>Trạng thái thanh toán</tr>
-                                    <tr>Vận chuyển</tr>
-                                </thead>
-                            </table>
+                        <div class="customer-table-wrap">
+                            <div class="customer-table-bg">
+                                <p class="title-detail"> Danh sách đơn hàng mới nhất </p>
+                                <div class="table-wrap">
+                                    <table class="table">
+                                        <thead>
+                                            <th class="order-number">Mã đơn hàng</th>
+                                            <th class="date">Ngày đặt</th>
+                                            <th class="total">Thành tiền</th>
+                                            <th class="payment-status">Trạng thái thanh toán</th>
+                                            <th class="fulfillment-status">Vận chuyển</th>
+                                        </thead>
+                                        <tbody>
+                                            <tr class="order">
+                                                <td>
+                                                    <a href="">#194877</a>
+                                                </td>
+                                                <td>
+                                                    <span>18/03/2024</span>
+                                                </td>
+                                                <td>
+                                                    <span class="total-money">360,000đ</span>
+                                                </td>
+                                                <td>
+                                                    <span class="status-pending">pending</span>
+                                                </td>
+                                                <td>
+                                                    <span class="status-fulfilled">not fulfilled</span>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
-    <!--------------------------------------------FOOTER----------------------------------------------------->
-    <footer>
-        <div class="footerWrap">
-            <div class="mainFooter">
-                <div class="col">
-                    <div class="footer-contentWrap">
-                        <h4 class="footer-title">Giới thiệu</h4>
-                        <div class="footer-content">
-                            <p>A Little Leaf Tiệm tạp hóa của Tình yêu: dành cho những góc bạn yêu ở nơi được gọi là "Nhà"</p>
-                        </div>
-                        <div class="footerLogo">
-                            <img src="../img/footerLogo.webp" alt="">
+        </div>
+        <!--------------------------------------------FOOTER----------------------------------------------------->
+        <footer>
+            <div class="footerWrap">
+                <div class="mainFooter">
+                    <div class="col">
+                        <div class="footer-contentWrap">
+                            <h4 class="footer-title">Giới thiệu</h4>
+                            <div class="footer-content">
+                                <p>A Little Leaf Tiệm tạp hóa của Tình yêu: dành cho những góc bạn yêu ở nơi được gọi là "Nhà"</p>
+                            </div>
+                            <div class="footerLogo">
+                                <img src="img/footerLogo.webp" alt="">
+                            </div>
                         </div>
                     </div>
-                </div>
 
-                <div class="col">
-                    <div class="footer-contentWrap">
-                        <h4 class="footer-title">Liên kết</h4>
-                        <div class="footer-content">
-                            <ul>
-                                <li class="items">
-                                    <a href="">Tìm kiếm</a>
-                                </li>
-                                <li class="items">
-                                    <a href="">Giới thiệu</a>
-                                </li>
-                                <li class="items">
-                                    <a href="">Chính sách đổi trả</a>
-                                </li>
-                            </ul>
+                    <div class="col">
+                        <div class="footer-contentWrap">
+                            <h4 class="footer-title">Liên kết</h4>
+                            <div class="footer-content">
+                                <ul>
+                                    <li class="items">
+                                        <a href="">Tìm kiếm</a>
+                                    </li>
+                                    <li class="items">
+                                        <a href="">Giới thiệu</a>
+                                    </li>
+                                    <li class="items">
+                                        <a href="">Chính sách đổi trả</a>
+                                    </li>
+                                </ul>
+                            </div>
                         </div>
                     </div>
-                </div>
                 
-                <div class="col">
-                    <div class="footer-contentWrap">
-                        <h4 class="footer-title">Showroom</h4>
-                        <div class="footer-content">
-                            <ul>
-                                <li class="contact">
-                                    <p><ion-icon name="location-outline"></ion-icon> 212/A51 Nguyễn Trãi, P. Nguyễn Cư Trinh, Quận 1</p>
-                                </li>
-                                <li class="contact">
-                                    <p><ion-icon name="call-outline"></ion-icon> 098.873.55.00</p>
-                                </li>
-                                <li class="contact">
-                                    <p><ion-icon name="mail-outline"></ion-icon> alittleleaf.homedecor@gmail.com</p>
-                                </li>
-                            </ul>
+                    <div class="col">
+                        <div class="footer-contentWrap">
+                            <h4 class="footer-title">Showroom</h4>
+                            <div class="footer-content">
+                                <ul>
+                                    <li class="contact">
+                                        <p><ion-icon name="location-outline"></ion-icon> 212/A51 Nguyễn Trãi, P. Nguyễn Cư Trinh, Quận 1</p>
+                                    </li>
+                                    <li class="contact">
+                                        <p><ion-icon name="call-outline"></ion-icon> 098.873.55.00</p>
+                                    </li>
+                                    <li class="contact">
+                                        <p><ion-icon name="mail-outline"></ion-icon> alittleleaf.homedecor@gmail.com</p>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col">
+                        <div class="footer-contentWrap">
+                            <h4 class="footer-title">Mạng xã hội</h4>
+                            <div class="footer-content">
+                                <div class="wrapSocial">
+                                    <ion-icon name="logo-facebook"></ion-icon>
+                                </div>
+                                <div class="wrapSocial">
+                                    <ion-icon name="logo-instagram"></ion-icon>
+                                </div>
+                                <div class="wrapSocial">
+                                    <ion-icon name="logo-tiktok"></ion-icon>
+                                </div>
+                                <div class="wrapSocial">
+                                    <ion-icon name="logo-youtube"></ion-icon>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
-
-                <div class="col">
-                    <div class="footer-contentWrap">
-                        <h4 class="footer-title">Mạng xã hội</h4>
-                        <div class="footer-content">
-                            <div class="wrapSocial">
-                                <ion-icon name="logo-facebook"></ion-icon>
-                            </div>
-                            <div class="wrapSocial">
-                                <ion-icon name="logo-instagram"></ion-icon>
-                            </div>
-                            <div class="wrapSocial">
-                                <ion-icon name="logo-tiktok"></ion-icon>
-                            </div>
-                            <div class="wrapSocial">
-                                <ion-icon name="logo-youtube"></ion-icon>
-                            </div>
-                        </div>
-                    </div>
+                <div class="footerBottom">
+                    <p>Copyright © 2024 A Little Leaf. Powered by Haravan</p>
                 </div>
             </div>
-            <div class="footerBottom">
-                <p>Copyright © 2024 A Little Leaf. Powered by Haravan</p>
+        </footer>
+    </div>
+    <div id="site-nav" class="site-nav">
+        <div id="site-cart" class="site-nav-container">
+            <div class="site-nav-container-last">
+                <p class="title"Giỏ hàng></p>
+                <div class="cart-view">
+                </div>
             </div>
         </div>
-    </footer>
+        <div id="site-search" class="site-nav-container">
+            <div class="site-nav-container-last">
+                <p class="title">Tìm kiếm</p>
+                <div class="search-box-wrap">
+                    <form class="searchForm" action="">
+                        <div class="search-inner">
+                            <input type="text" class="searchInput" size="20" placeholder="Tìm kiếm sản phẩm">
+                        </div>
+                        <button class="btn-search">
+                            <ion-icon name="search-outline"></ion-icon>
+                        </button>
+                    </form>
+                    <div class="result-wrap">
+                        <div class="result-content">
+                            <div class="item-ult">
+                                <div class="thumbs">
+                                    <a href="">
+                                        <img src="img/demo-result/demo-result.jpg" alt="">
+                                    </a>
+                                </div>
+                                <div class="title">
+                                    <a href="">Vòng An</a>
+                                    <p class="f-initial">193,000đ</p>
+                                </div>
+                            </div>
+                            <div class="item-ult">
+                                <div class="thumbs">
+                                    <a href="">
+                                        <img src="img/demo-result/demo-result.jpg" alt="">
+                                    </a>
+                                </div>
+                                <div class="title">
+                                    <a href="">Vòng An</a>
+                                    <p class="f-initial">193,000đ</p>
+                                </div>
+                            </div>
+                            <div class="item-ult">
+                                <div class="thumbs">
+                                    <a href="">
+                                        <img src="img/demo-result/demo-result.jpg" alt="">
+                                    </a>
+                                </div>
+                                <div class="title">
+                                    <a href="">Vòng An</a>
+                                    <p class="f-initial">193,000đ</p>
+                                </div>
+                            </div>
+                            <div class="item-ult">
+                                <div class="thumbs">
+                                    <a href="">
+                                        <img src="img/demo-result/demo-result.jpg" alt="">
+                                    </a>
+                                </div>
+                                <div class="title">
+                                    <a href="">Vòng An</a>
+                                    <p class="f-initial">193,000đ</p>
+                                </div>
+                            </div>
+                            <div class="item-ult">
+                                <div class="thumbs">
+                                    <a href="">
+                                        <img src="img/demo-result/demo-result.jpg" alt="">
+                                    </a>
+                                </div>
+                                <div class="title">
+                                    <a href="">Vòng An</a>
+                                    <p class="f-initial">193,000đ</p>
+                                </div>
+                            </div>
+                            <div class="resultMore">
+                                <a href="">Xem thêm 193 sản phẩm</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <button id="site-close-handle" class="site-close-handle">
+            <span class="close">
+                <ion-icon name="close-outline"></ion-icon>
+        </button>
+    </div>
 </body>
 </html>
