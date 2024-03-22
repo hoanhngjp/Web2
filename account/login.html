@@ -101,43 +101,50 @@
                 <ul class="others">
                     <li><a href="../account/login.html"><ion-icon name="person-circle-outline"></ion-icon></a></li>
                     <li><a href="" id="open-site-search"><ion-icon name="search-outline"></ion-icon></a></li>
-                    <li><a href="" id="open-site-cart"><ion-icon name="bag-outline"></ion-icon></a></li>
+                    <li>
+                        <a href="" id="open-site-cart">
+                            <ion-icon name="bag-outline"></ion-icon>
+                            <span class="count-holder">
+                                <span class="count">4</span>
+                            </span>
+                        </a>
+                    </li>
                 </ul>
             </div>
         </header>
         <!--------------------------------------------LOGIN----------------------------------------------------->
         <div class="login-wrap">
-        <div class="login-title-wrap">
-            <div class="header">
-                <h1>Đăng nhập</h1>
+            <div class="login-title-wrap">
+                <div class="header">
+                    <h1>Đăng nhập</h1>
+                </div>
             </div>
-        </div>
-        <div class="form-wrap"> 
-            <div class="form">
-                <form action="">
-                    <div class="errors-wrap">
-                        <span class="show-error">*Thông tin đăng nhập không hợp lệ</span>
-                    </div>
-                    <div class="input-wrap">
-                        <input type="email" name="" id="" placeholder="Email">
-                    </div>
-                    <div class="input-wrap">
-                        <input type="password" name="" id="" placeholder="Mật khẩu">
-                    </div>
-                    <div class="others-wrap">
-                        <div class="button-wrap">
-                            <button class="sign-in-btn" type="submit" value="login">ĐĂNG NHẬP</button>
+            <div class="form-wrap"> 
+                <div class="form">
+                    <form action="">
+                        <div class="errors-wrap">
+                            <span class="show-error">*Thông tin đăng nhập không hợp lệ</span>
                         </div>
-                        <div class="reg-pass">
-                            <a href="">Quên mật khẩu?</a>
-                            <br>
-                            hoặc
-                            <a href="/account/register.html">Đăng ký</a>
+                        <div class="input-wrap">
+                            <input type="email" name="" id="" placeholder="Email">
                         </div>
-                    </div>
-                </form>
+                        <div class="input-wrap">
+                            <input type="password" name="" id="" placeholder="Mật khẩu">
+                        </div>
+                        <div class="others-wrap">
+                            <div class="button-wrap">
+                                <button class="sign-in-btn" type="submit" value="login">ĐĂNG NHẬP</button>
+                            </div>
+                            <div class="reg-pass">
+                                <a href="">Quên mật khẩu?</a>
+                                <br>
+                                hoặc
+                                <a href="/account/register.html">Đăng ký</a>
+                            </div>
+                        </div>
+                    </form>
+                </div>
             </div>
-        </div>
         </div>  
         <!--------------------------------------------FOOTER----------------------------------------------------->
         <footer>
@@ -222,8 +229,105 @@
     <div id="site-nav" class="site-nav">
         <div id="site-cart" class="site-nav-container">
             <div class="site-nav-container-last">
-                <p class="title"Giỏ hàng></p>
+                <p class="title"Giỏ hàng>Giỏ hàng</p>
                 <div class="cart-view">
+                    <table id="cart-inside" class="">
+                        <tbody>
+                            <tr class="item-in-cart">
+                                <td class="img">
+                                    <a href="">
+                                        <img src="../img/pro-in-cart-demo.jpg" alt="">
+                                    </a>
+                                </td>
+                                <td>
+                                    <a class="pro-title-cart" href="">Ví Vải Hoa</a>
+                                    <span class="variant"></span>
+                                    <span class="pro-quantity-cart">1</span>
+                                    <span class="pro-price-cart">150,000đ</span>
+                                    <span class="remove-in-cart">
+                                        <a href="">
+                                            <ion-icon name="close-outline"></ion-icon>                                        
+                                        </a>
+                                    </span>
+                                </td>
+                            </tr>
+                            <tr class="item-in-cart">
+                                <td class="img">
+                                    <a href="">
+                                        <img src="../img/pro-in-cart-demo.jpg" alt="">
+                                    </a>
+                                </td>
+                                <td>
+                                    <a class="pro-title-cart" href="">Ví Vải Hoa</a>
+                                    <span class="variant"></span>
+                                    <span class="pro-quantity-cart">1</span>
+                                    <span class="pro-price-cart">150,000đ</span>
+                                    <span class="remove-in-cart">
+                                        <a href="">
+                                            <ion-icon name="close-outline"></ion-icon>                                        
+                                        </a>
+                                    </span>
+                                </td>
+                            </tr>
+                            <tr class="item-in-cart">
+                                <td class="img">
+                                    <a href="">
+                                        <img src="../img/pro-in-cart-demo.jpg" alt="">
+                                    </a>
+                                </td>
+                                <td>
+                                    <a class="pro-title-cart" href="">Ví Vải Hoa</a>
+                                    <span class="variant"></span>
+                                    <span class="pro-quantity-cart">1</span>
+                                    <span class="pro-price-cart">150,000đ</span>
+                                    <span class="remove-in-cart">
+                                        <a href="">
+                                            <ion-icon name="close-outline"></ion-icon>                                        
+                                        </a>
+                                    </span>
+                                </td>
+                            </tr>
+                            <tr class="item-in-cart">
+                                <td class="img">
+                                    <a href="">
+                                        <img src="../img/pro-in-cart-demo.jpg" alt="">
+                                    </a>
+                                </td>
+                                <td>
+                                    <a class="pro-title-cart" href="">Ví Vải Hoa</a>
+                                    <span class="variant"></span>
+                                    <span class="pro-quantity-cart">1</span>
+                                    <span class="pro-price-cart">150,000đ</span>
+                                    <span class="remove-in-cart">
+                                        <a href="">
+                                            <ion-icon name="close-outline"></ion-icon>                                        
+                                        </a>
+                                    </span>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <span class="line"></span>
+                    <table class="table-total">
+                        <tbody>
+                            <tr>
+                                <td class="text-left" style="font-size: 14px;">TỔNG TIỀN: </td>
+                                <td class="text-right" id="total-in-cart" style="font-size: 14px;">600,000đ</td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <a href="">
+                                        <button>XEM GIỎ HÀNG</button>
+                                    </a>
+                                </td>
+                                <td>
+                                    <a href="">
+                                        <button>THANH TOÁN</button>
+                                    </a>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
                 </div>
             </div>
         </div>
@@ -244,7 +348,7 @@
                             <div class="item-ult">
                                 <div class="thumbs">
                                     <a href="">
-                                        <img src="img/demo-result/demo-result.jpg" alt="">
+                                        <img src="../img/demo-result/demo-result.jpg" alt="">
                                     </a>
                                 </div>
                                 <div class="title">
@@ -255,7 +359,7 @@
                             <div class="item-ult">
                                 <div class="thumbs">
                                     <a href="">
-                                        <img src="img/demo-result/demo-result.jpg" alt="">
+                                        <img src="../img/demo-result/demo-result.jpg" alt="">
                                     </a>
                                 </div>
                                 <div class="title">
@@ -266,7 +370,7 @@
                             <div class="item-ult">
                                 <div class="thumbs">
                                     <a href="">
-                                        <img src="img/demo-result/demo-result.jpg" alt="">
+                                        <img src="../img/demo-result/demo-result.jpg" alt="">
                                     </a>
                                 </div>
                                 <div class="title">
@@ -277,7 +381,7 @@
                             <div class="item-ult">
                                 <div class="thumbs">
                                     <a href="">
-                                        <img src="img/demo-result/demo-result.jpg" alt="">
+                                        <img src="../img/demo-result/demo-result.jpg" alt="">
                                     </a>
                                 </div>
                                 <div class="title">
@@ -288,7 +392,7 @@
                             <div class="item-ult">
                                 <div class="thumbs">
                                     <a href="">
-                                        <img src="img/demo-result/demo-result.jpg" alt="">
+                                        <img src="../img/demo-result/demo-result.jpg" alt="">
                                     </a>
                                 </div>
                                 <div class="title">

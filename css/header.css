@@ -140,3 +140,29 @@ ul.others li:hover{
 .others ion-icon{
     font-size: 30px;
 }
+
+#open-site-cart{
+    position: relative;
+}
+
+#open-site-cart .count-holder{
+    position: absolute;
+    top: 12px;
+    left: 0;
+    right: 0;
+    text-align: center;
+    font-size: 13px;
+    line-height: 1;
+    font-weight: bold;
+    height: 17px;
+    overflow: hidden;
+}
+
+.count-holder .count{
+    position: relative;
+    top: 0px;
+    text-align: center;
+    font-size: 13px;
+    line-height: 1;
+    font-weight: bold;
+}

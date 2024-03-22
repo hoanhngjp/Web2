@@ -12,7 +12,6 @@ document.addEventListener("DOMContentLoaded", function() {
         event.preventDefault();
         siteNav.classList.add("active");
         siteSearch.style.display = 'block';
-        mainBody.classList.add("site-active");
     })
 
 
@@ -27,5 +26,7 @@ document.addEventListener("DOMContentLoaded", function() {
         siteNav.classList.remove("active");
         siteSearch.classList.remove("showSearch");
         siteCart.classList.remove("showCart");
+        siteSearch.style.display = 'none';
+        siteCart.style.display= 'none';
     })
 })
