@@ -54,6 +54,7 @@ html, body{
 }
 /*-----------------------ROW-------------------------------*/
 .row{
+    display: flex;
     margin-right: -15px;
     margin-left: -15px;
 }
@@ -104,6 +105,11 @@ html, body{
     color: #001812;
     text-decoration: none;
     outline: none;
+    font-size: 14px;
+}
+
+.account-list ul > li > a:hover{
+    color: #518372;
 }
 
 .account-list ul > li > a::before{
@@ -162,6 +168,10 @@ a#view-address{
     outline: none;
 }
 
+a#view-address:hover{
+    color: #518372;
+}
+
 .customer-table-wrap{
     margin-bottom: 30px;
     margin-top: 30px;
@@ -170,6 +180,26 @@ a#view-address{
     width: 100%;
     position: relative;
     min-height: 1px;
+}
+
+.customer-table-bg{
+    background-color: #fff;
+    padding: 10px;
+}
+
+.customer-table-bg p{
+    margin: 0;
+}
+
+.title-detail{
+    text-transform: uppercase;
+    font-size: 15px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    position: relative;
+    border-bottom: 1px solid #ededed;
+    padding-bottom: 8px;
+    line-height: 21px;
 }
 
 .table-wrap{
@@ -183,5 +213,73 @@ a#view-address{
     margin-bottom: 20px;
     border-spacing: 0;
     border-collapse: collapse;
+    background: #fff;
 }
 
+.table tr{
+    height: 25px;
+    line-height: 30px;
+}
+
+.table thead th{
+    font-weight: 600;
+    font-size: 14px;
+}
+
+.table tr th:first-child{
+    padding-left: 0px;
+}
+
+.table > thead > tr > th{
+    vertical-align: bottom;
+    border-bottom: 2px solid #ddd;
+    padding: 8px;
+    line-height: 1.42857143;
+}
+
+.table > thead:first-child > tr:first-child > th{
+    border-top: 0;
+}
+
+.text-center{
+    text-align: center;
+}
+
+.table .oder{
+    background: #fff;
+}
+
+.table tr td{
+    vertical-align: middle;
+    border-top: none;
+    font-size: 14px;
+}
+
+.table tr td:first-child{
+    padding-left: 0px;
+}
+
+.table > tbody > tr > td{
+    padding: 8px;
+    line-height: 1.42857143;
+}
+
+.table tr a{
+    font-weight: 500;
+    float: left;
+    width: 85%;
+    margin-left: 3px;
+    line-height: 20px;
+    opacity: 0.66;
+    color: #001812;
+    text-decoration: none;
+    outline: none;
+}
+
+.table tr a:hover{
+    color: #518372;
+}
+
+.table tr td:last-child{
+    padding-right: 0px;
+}
