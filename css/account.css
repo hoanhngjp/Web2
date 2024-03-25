@@ -47,21 +47,11 @@ html, body{
     margin-right: auto;
     margin-left: auto;
 }
-
-.account-content::before{
-    display: table;
-    content: " ";
-}
 /*-----------------------ROW-------------------------------*/
 .row{
     display: flex;
     margin-right: -15px;
     margin-left: -15px;
-}
-
-.row::before{
-    display: table;
-    content: " ";
 }
 
 .sidebar-account{
