@@ -112,3 +112,185 @@ html, body{
     box-sizing: border-box;
 }
 
+.content-wrap{
+    width: 75%;
+}
+
+.address-title-wrap{
+    width: 100%;
+    position: relative;
+    min-height: 1px;
+    padding-right: 15px;
+    padding-left: 15px;
+}
+
+.address-title{
+    margin-bottom: 0;
+    font-size: 16px;
+    padding: 10px 0 10px 10px;
+    background-color: #d9edf7;
+    border-color: #bce8f1;
+    position: relative;
+}
+
+.address-title h3{
+    color: #2a5f4b;
+    margin: 0;
+    font-size: 14px;
+}
+
+p.adrress_actions{
+    margin: 7px 5px 0px 0;
+    position: absolute;
+    z-index: 99;
+    top: 0;
+    right: 0;
+    text-align: right;
+}
+
+span.action_link {
+    padding: 5px;
+}
+
+.action_link a {
+    color: #001812;
+    text-decoration: none;
+    text-transform: uppercase;
+    font-size: 15px;
+}
+
+.action_link a:hover{
+    color: #518372;
+}
+
+.address_table{
+    margin-bottom: 10px;
+    border-top: 0px solid #ddd;
+    background: #fafafa;
+    padding: 15px;
+}
+
+.view_address p {
+    margin: 5px 0;
+    line-height: 15px;
+    font-size: 14px;
+}
+
+.customer-infor-wrap{
+    display: flex;
+    justify-content: space-between;
+}
+
+.customer_name, .customer_phone, .customer_address{
+    min-height: 1px;
+    padding-right: 15px;
+    padding-left: 15px;
+}
+
+.customer_name_infor, .customer_phone_infor, .customer_address_infor{
+    width: 50%;
+    min-height: 1px;
+    padding-right: 15px;
+    padding-left: 15px;
+}
+
+.input-group {
+    display: flex;
+    margin: 15px 0px;
+    position: relative;
+    border-collapse: separate;
+}
+
+.input-group .input-group-addon {
+    padding: 6px 10px;
+    border-radius: 0;
+    color: #DAD9D9;
+    background-color: #ebebeb;
+    border-color: #ebebeb;
+}
+
+.input-group-addon:first-child {
+    border-right: 0;
+}
+
+.input-group-addon ion-icon{
+    position: relative;
+    top: 1px;
+    display: inline-block;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 1;
+}
+
+.input-group .form-control:last-child{
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+}
+
+.input-group .form-control {
+    -webkit-border-radius: 0;
+    border-radius: 0;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+    border-color: #ebebeb;
+    display: table-cell;
+    position: relative;
+    z-index: 2;
+    float: left;
+    width: 100%;
+    margin-bottom: 0;
+}
+
+.form-control{
+    height: 34px;
+    padding: 6px 12px;
+    font-size: 14px;
+    line-height: 1.42857143;
+    color: #555;
+    background-color: #fff;
+    background-image: none;
+    border: 1px solid #ccc;
+}
+
+.action_bottom .btn {
+    height: 35px;
+    line-height: 35px;
+    outline: 0;
+    margin-right: 5px;
+    font-size: 14px;
+    text-transform: uppercase;
+    padding: 0 30px;
+    border: 0;
+    background: #487264;
+    color: #fff;
+    display: inline-block;
+    border-radius: 0;
+}
+
+.btn{
+    margin-bottom: 0;
+    display: inline-block;
+    padding: 6px 12px;
+    margin-bottom: 0;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 1.42857143;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: middle;
+    -ms-touch-action: manipulation;
+    touch-action: manipulation;
+    cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    background-image: none;
+    border: 1px solid transparent;
+    border-radius: 4px;
+}
+
+.action_bottom a{
+    color: #001812;
+    text-decoration: none;
+}
