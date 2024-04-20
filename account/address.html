@@ -13,6 +13,7 @@
     <title>Tài khoản</title>
     <link rel="icon" type="image/x-icon" href="../img/footerLogo.webp">
     <script src="../js/showCartSearch.js" defer></script>
+    <script src="../js/showEditAddAddress.js" defer></script>
 </head>
 <body>
     <div class="main-body">
@@ -136,7 +137,7 @@
                         </div>
                     </div>
                     <div class="content-wrap">
-                        <div class="row">
+                        <div class="">
                             <div class="content-page">
                                 <div class="address-table-wrap">
                                     <div id="address-table">
@@ -148,7 +149,7 @@
                                                     </h3>
                                                     <p class="adrress_actions">
                                                         <span class="action_link action_edit">
-                                                            <a href="">
+                                                            <a href="" class="showEdit">
                                                                 <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
                                                             </a>
                                                         </span>
@@ -161,6 +162,7 @@
                                                 </div>
                                             </div>   
                                         </div>
+                                        <!--Hiện danh sách địa chỉ-->
                                         <div class="address_table">
                                             <div id="view_address" class="customer_address">
                                                 <div class="view_address">
@@ -196,7 +198,8 @@
                                                     </div>
                                                 </div>
                                             </div>
-                                            <div id="edit_address" class="customer_address edit_address">
+                                            <!--Bảng sửa địa chỉ-->
+                                            <div id="edit_address" class="customer_address edit_address" style="display: none;">
                                                 <form id="address_form" accept-charset="UTF-8" action="">
                                                     <div class="input-group">
                                                         <span class="input-group-addon">
@@ -228,11 +231,40 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="add-address-wrap">
-
-                                </div>
                             </div>
                         </div>
+                    </div>
+                    <div class="add-address-wrap">
+                        <a href="#" id="add-new-address" class="add-new-address">Nhập địa chỉ mới</a>
+                        <div id="add_address" class="customer_address edit_address" style="display: none;">
+                            <form accept-charset="UTF-8" action="" id="address_form_new">
+                                <div class="input-group">
+                                    <span class="input-group-addon">
+                                        <ion-icon name="person-circle-outline"></ion-icon>
+                                    </span>
+                                    <input id="address_fullname" class="form-control textbox" type="text" size="40" value="" placeholder="Họ Tên">
+                                </div>
+                                <div class="input-group">
+                                    <span class="input-group-addon">
+                                        <ion-icon name="home-outline"></ion-icon>
+                                    </span>
+                                    <input id="address_address" class="form-control textbox" type="text" size="40" value="" placeholder="Địa chỉ">
+                                </div>
+                                <div class="input-group">
+                                    <span class="input-group-addon">
+                                        <ion-icon name="person-circle-outline"></ion-icon>
+                                    </span>
+                                    <input id="address_phone" class="form-control textbox" type="text" size="40" value="" placeholder="Số điện thoại">
+                                </div>
+                                <div class="action_bottom">
+                                    <input type="submit" class="btn bt-primary" value="THÊM MỚI">
+                                    <span>
+                                        hoặc
+                                        <a href="">Hủy</a>
+                                    </span>
+                                </div>
+                            </form>
+                        </div>  
                     </div>
                 </div>
             </div>

@@ -50,8 +50,18 @@ html, body{
 /*-----------------------ROW-------------------------------*/
 .row{
     display: flex;
+    justify-content: center;
     margin-right: -15px;
     margin-left: -15px;
+}
+
+.row2{
+    margin-right: -15px;
+    margin-left: -15px;
+}
+
+.content-page{
+    width: 100%;
 }
 
 .sidebar-account{
@@ -164,6 +174,7 @@ span.action_link {
 }
 
 .address_table{
+    width: 100%;
     margin-bottom: 10px;
     border-top: 0px solid #ddd;
     background: #fafafa;
@@ -292,5 +303,28 @@ span.action_link {
 
 .action_bottom a{
     color: #001812;
+    text-decoration: none;
+}
+
+.add-address-wrap{
+    width: 40%;
+    padding-left: 30px;
+}
+
+#add_address{
+    padding-left: 0px;
+}
+
+.action_bottom a:hover{
+    color: #487264;
+}
+
+.add-new-address{
+    padding-bottom: 10px;
+    display: inline-block;
+    padding: 10px;
+    background: #487264;
+    color: #fff !important;
+    text-transform: uppercase;
     text-decoration: none;
 }
