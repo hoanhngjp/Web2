@@ -6,15 +6,18 @@
     <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
     <script src="https://kit.fontawesome.com/39b6b90061.js" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="css/header.css">
-    <link rel="stylesheet" href="css/footer.css">
-    <link rel="stylesheet" href="css/home.css">
-    <link rel="stylesheet" href="css/cart-search.css">
+    <link rel="stylesheet" href="css/header.css?v=<?php echo time();?>">
+    <link rel="stylesheet" href="css/footer.css?v=<?php echo time();?>">
+    <link rel="stylesheet" href="css/home.css?v=<?php echo time();?>">
+    <link rel="stylesheet" href="css/cart-search.css?v=<?php echo time();?>">
     <title>A Little Leaf</title>
     <link rel="icon" type="image/x-icon" href="img/footerLogo.webp">
     <script src="js/showCartSearch.js" defer></script>
 </head>
 <body>
+    <?php
+        session_start();
+    ?>
     <div id="main-body">
         <!--------------------------------------------HEADER----------------------------------------------------->
         <?php
@@ -65,7 +68,7 @@
                     echo '<div class="category">';
                     while ($row = $result->fetch_assoc()) {
                         echo '<div class="category-item">';
-                            echo '<a href="">';
+                            echo '<a href="./collections.php?category_id=' . $row['category_id'] . '">';
                                 echo '<div class="category-item-img">';
                                     echo '<img src="img/homeCategory/' . $row['category_img'] . '" alt="">';
                                 echo '</div>';
@@ -78,7 +81,7 @@
                 else {
                     echo 'KHÔNG CÓ DỮ LIỆU !!!';
                 }
-                $conn->close();
+                
             ?>
         </div>    
         <!--------------------------------------------FOOTER----------------------------------------------------->

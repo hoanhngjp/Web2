@@ -27,10 +27,10 @@
                         while ($row = $result->fetch_assoc()) {
                             echo '<li>';
                                 if (hasSubCategories($row['category_id'])) {
-                                    echo '<a href="">' . $row['category_name'] . ' <ion-icon name="chevron-forward-outline"></ion-icon></a>';
+                                    echo '<a href="./collections.php?category_id=' . $row['category_id'] . '">' . $row['category_name'] . ' <ion-icon name="chevron-forward-outline"></ion-icon></a>';
                                 }
                                 else {
-                                    echo '<a href="">' . $row['category_name'] . '</a>';
+                                    echo '<a href="./collections.php?category_id=' . $row['category_id'] . '">' . $row['category_name'] . '</a>';
                                 }
                                 //Kiểm tra nếu có mục con
                                 $subQuery = "SELECT * FROM Category WHERE category_parent_id = " . $row['category_id'];
@@ -39,7 +39,7 @@
                                     echo '<ul class = "subMenu">';
                                     //Xuất các mục con
                                     while ($subRow = $subResult->fetch_assoc()) {
-                                        echo '<li><a href="">' . $subRow['category_name'] . '</a></li>';
+                                        echo '<li><a href="./collections.php?category_id=' . $subRow['category_id'] . '">' . $subRow['category_name'] . '</a></li>';
                                     }
                                     echo '</ul>';
                                 }

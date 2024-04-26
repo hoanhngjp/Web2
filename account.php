@@ -6,15 +6,18 @@
     <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
     <script src="https://kit.fontawesome.com/39b6b90061.js" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="css/header.css">
-    <link rel="stylesheet" href="css/footer.css">
-    <link rel="stylesheet" href="css/account.css">
-    <link rel="stylesheet" href="css/cart-search.css">
+    <link rel="stylesheet" href="css/header.css?v=<?php echo time();?>">
+    <link rel="stylesheet" href="css/footer.css?v=<?php echo time();?>">
+    <link rel="stylesheet" href="css/account.css?v=<?php echo time();?>">
+    <link rel="stylesheet" href="css/cart-search.css?v=<?php echo time();?>">
     <title>Tài khoản</title>
     <link rel="icon" type="image/x-icon" href="../img/footerLogo.webp">
-    <script src="js/showCartSearch.js" defer></script>
+    <script src="js/showCartSearch.js?v=<?php echo time();?>" defer></script>
 </head>
 <body>
+    <?php
+        session_start();
+    ?>
     <div id="main-body" class="main-body">
         <!--------------------------------------------HEADER----------------------------------------------------->
         <?php

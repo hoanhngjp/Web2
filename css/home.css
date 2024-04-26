@@ -129,6 +129,10 @@ html, body{
     border-radius: 24px;
 }
 
+.category-item-img img:hover{
+    border: 3px solid #518372;
+}
+
 .category-item span {
     font-weight: bold; /* Định dạng văn bản in đậm */
 }

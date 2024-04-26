@@ -115,3 +115,7 @@ html, body{
 .reg-pass a:hover{
     color: #487264;
 }
+
+.show-error{
+    display: none;
+}

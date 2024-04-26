@@ -18,4 +18,13 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         });
     });
+
+    // Bổ sung xử lý sự kiện cho các liên kết trong .sub-menu
+    var subMenuLinks = document.querySelectorAll('.sub-menu a');
+    subMenuLinks.forEach(function(link) {
+        link.addEventListener('click', function(event) {
+            // Cho phép hành động mặc định của liên kết xảy ra (chuyển hướng trang)
+            // Bỏ qua việc ngăn chặn mặc định của sự kiện click
+        });
+    });
 });

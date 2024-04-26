@@ -131,3 +131,6 @@ html, body{
     color: #487264;
 }
 
+.show-error{
+    display: none;
+}

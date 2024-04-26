@@ -6,19 +6,39 @@
     <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
     <script src="https://kit.fontawesome.com/39b6b90061.js" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="css/header.css">
-    <link rel="stylesheet" href="css/footer.css">
-    <link rel="stylesheet" href="css/product.css">
-    <link rel="stylesheet" href="css/cart-search.css">
-    <title>Tài khoản</title>
-    <link rel="icon" type="image/x-icon" href="../img/footerLogo.webp">
+    <link rel="stylesheet" href="css/header.css?v=<?php echo time();?>">
+    <link rel="stylesheet" href="css/footer.css?v=<?php echo time();?>">
+    <link rel="stylesheet" href="css/product.css?v=<?php echo time();?>">
+    <link rel="stylesheet" href="css/cart-search.css?v=<?php echo time();?>">
+    <title>Sản phẩm</title>
+    <link rel="icon" type="image/x-icon" href="img/footerLogo.webp">
     <script src="js/showCartSearch.js" defer></script>
 </head>
 <body>
+    <?php
+        session_start();
+    ?>
     <div class="main-body">
         <!--------------------------------------------HEADER----------------------------------------------------->
         <?php
         require_once "./template/header.php";
+        require_once "./function/db_connect.php";
+        $conn = connectDatabase();
+
+        if (isset($_GET['product_id'])) {
+            $product_id = $_GET['product_id'];
+
+            $query_product = "SELECT * FROM Product WHERE product_id = $product_id ";
+            $result_query_product = mysqli_query($conn, $query_product);
+            $result_product = $result_query_product->fetch_assoc();
+
+            $query_category = "SELECT * FROM Category WHERE category_id = {$result_product['id_category']}";
+            $result_qeury_category = mysqli_query($conn, $query_category);
+            $result_category = $result_qeury_category->fetch_assoc();
+        }
+        else {
+            echo "KHÔNG TÌM THẤY SẢN PHẨM !!!";
+        }
         ?>
         <!--------------------------------------------PRODUCT----------------------------------------------------->
         <div class="productDetail-page">
@@ -27,20 +47,22 @@
                 <div class="nav-header">
                     <ol>
                         <li>
-                            <a href="">
+                            <a href="./home.php">
                                 <span>Trang chủ</span>
                             </a>
                             <meta itemprop="position" content="1">
                         </li>
                         <li>
-                            <a href="">
-                                <span>Đồ Cá Nhân</span>
-                            </a>
+                        <?php 
+                            echo '<a href="./collections.php?category_id=' . $result_category['category_id'] . '">';
+                                echo '<span>' . $result_category['category_name'] . '</span>';
+                            echo '</a>';        
+                        ?>
                             <meta itemprop="position" content="2">
                         </li>
                         <li class="active">
                             <span>
-                                <span>Bàn Phím Hoàng Tử Bé Giao Ước Hoa Hồng</span>
+                                <?php echo '<span>' . $result_product['product_name'] . '</span>'; ?>
                             </span>
                             <meta itemprop="position" content="3">
                         </li>
@@ -54,57 +76,40 @@
                             <div class="product-gallery">
                                 <div class="product-gallery-container">
                                     <div class="product-gallery-thumbs">
-                                        <div class="product-gallery-thumb .active">
-                                            <a href="#" class="thumb-placeholder">
-                                                <img src="img/product-detail/product-detail-img-1.webp" alt="">
-                                            </a>
-                                        </div>
-                                        <div class="product-gallery-thumb">
-                                            <a href="#" class="thumb-placeholder">
-                                                <img src="img/product-detail/product-detail-img-2.webp" alt="">
-                                            </a>
-                                        </div>
-                                        <div class="product-gallery-thumb">
-                                            <a href="#" class="thumb-placeholder">
-                                                <img src="img/product-detail/product-detail-img-3.webp" alt="">
-                                            </a>
-                                        </div>
-                                        <div class="product-gallery-thumb">
-                                            <a href="#" class="thumb-placeholder">
-                                                <img src="img/product-detail/product-detail-img-4.webp" alt="">
-                                            </a>
-                                        </div>
-                                        <div class="product-gallery-thumb">
-                                            <a href="#" class="thumb-placeholder">
-                                                <img src="img/product-detail/product-detail-img-5.webp" alt="">
-                                            </a>
-                                        </div>
-                                        <div class="product-gallery-thumb">
-                                            <a href="#" class="thumb-placeholder">
-                                                <img src="img/product-detail/product-detail-img-6.webp" alt="">
-                                            </a>
-                                        </div>
-                                        <div class="product-gallery-thumb">
-                                            <a href="#" class="thumb-placeholder">
-                                                <img src="img/product-detail/product-detail-img-7.webp" alt="">
-                                            </a>
-                                        </div>
+                                    <?php 
+                                        $query_images = "SELECT * FROM `Product-Images` WHERE id_product = {$result_product['product_id']}";
+                                        $result_query_images = mysqli_query($conn, $query_images);
+                                        while ($row = $result_query_images->fetch_assoc()) {
+                                            echo '<div class="product-gallery-thumb">';
+                                                echo '<a href="#" class="thumb-placeholder">';
+                                                    echo '<img src="img/prdImg/' . $row['img_name'] . '" alt=" ' . $result_product['product_name'] . '">';
+                                                echo '</a>';
+                                            echo '</div>';
+                                        }
+                                    ?>
                                     </div>
                                 </div>
                                 <div class="product-image-detail">
                                     <div class="product-image-wrap">
-                                        <img class="product-img-feature" src="img/product-detail/product-detail-img-1.webp" alt="">
+                                        <?php 
+                                            $query_img =  "SELECT * FROM `Product-Images` WHERE id_product = {$result_product['product_id']} GROUP BY id_product";
+                                            $result_query_img = mysqli_query($conn, $query_img);
+                                            $result_img = $result_query_img->fetch_assoc();
+
+                                            echo '<img class="product-img-feature" src="img/prdImg/' . $result_img['img_name'] . '" alt="' . $result_product['product_name'] . '">';
+                                        ?>
                                     </div>
                                 </div>
+                                <script src="js/changeProductPicture.js" defer></script>
                             </div>
                         </div>
                         <div class="product-content-desc">
                             <div class="product-title">
-                                <h1>Bàn Phím Hoàng Tử Bé Giao Ước Hoa Hồng</h1>
+                                <?php echo '<h1>' . $result_product['product_name'] . '</h1>'; ?>
                                 <span id="pro-sku">SKU: BPHTBGUHH-1</span>
                             </div>
                              <div class="product-price">
-                                <span class="pro-price">5,350,000</span>
+                                <span class="pro-price"><?php echo number_format($result_product['product_price'], 0, ',', '.') . '₫' ?></span>
                              </div>
                              <form class="form-add-item" action="">
                                 <div class="selector-actions">
@@ -124,47 +129,7 @@
                                 </div>
                                 <div class="description-content">
                                     <div class="description-productdetail">
-                                        <em>
-                                            "Nếu bạn đã dành trọn thời gian để chăm sóc một đóa hồng, thì đóa hồng đó sẽ trở nên vô cùng quan trọng với bạn"
-                                        </em>
-                                        <br>
-                                        <br>
-                                        - Được lấy cảm hứng từ cuốn tiểu thuyết " Hoàng Tử Bé", bàn phím có thể sử dụng với máy tính, máy tính bảng, điện thoại 
-                                        <br>
-                                        - Tương thích với các hệ điều hành khác nhau (Windows/ macOS/ iOS/ Android)
-                                        <br>
-                                        - Loại bàn phím: bàn phím cơ
-                                        <br>
-                                        - Gồm 3 chế độ kết nối:
-                                        <br>
-                                        + Bluetooth 5.1
-                                        <br>
-                                        + 2.4 GHz
-                                        <br>
-                                        + Dây cắm: Type-C
-                                        <br>
-                                        - Tặng 1 Keycap kim loại kỉ niệm Hoàng Tử Bé
-                                        <br>
-                                        - Thời lượng pin 4000mAh
-                                        <br>
-                                        - Phím nhỏ chất liệu PBT mang lại cảm giác tinh tế
-                                        <br>
-                                        - Switch có thể thay thế theo ý muốn
-                                        <br>
-                                        - Chất liệu: Hợp kim nhôm bền bỉ
-                                        <br>
-                                        - Kích Thước: 37,2x12,35x4,2 cm (DxRxC)
-                                        <br>
-                                        - Số phím:100 phím
-                                        <br>
-                                        - Sản phẩm gồm: Thân bàn phím, tấm che bụi, cáp dữ liệu (1.5m), đầu thu 2.4GHz, bộ kéo phím, bộ kéo trục, sách hướng dẫn, phiếu bảo hành, móc khóa, keycap kim loại kỷ niệm, thiệp kỷ niệm hoàng tử bé
-                                        <p>
-                                            - Giá ord:
-                                            <br>
-                                            + Có đèn: 5350k
-                                            <br>
-                                            + Không đèn: 4550k
-                                        </p>
+                                        <?php echo nl2br($result_product['product_description']); ?>
                                     </div>
                                 </div>
                              </div>
@@ -175,266 +140,46 @@
                             <h2>Sản phẩm liên quan</h2>
                         </div>
                         <div class="content-product-list">
-                            <div class="pro-loop">
-                                <div class="product-block">
-                                    <div class="product-img">
-                                        <div class="sold-out">
-                                            <span>Hết hàng</span>
-                                        </div>
-                                        <a href="">
-                                            <picture>
-                                                <img src="img/product-related/product-related-demo.jpg" alt="">
-                                            </picture>
-                                        </a>
-                                    </div>
-                                    <div class="product-detail">
-                                        <div class="box-proDetail">
-                                            <h3 class="pro-name">
-                                                <a href="">Balo Vải Mèo Neko</a>
-                                            </h3>
-                                            <div class="box-proPrice">
-                                                <p class="pro-pice">
-                                                    <span>450,000đ</span>
-                                                </p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="pro-loop">
-                                <div class="product-block">
-                                    <div class="product-img">
-                                        <div class="sold-out">
-                                            <span>Hết hàng</span>
-                                        </div>
-                                        <a href="">
-                                            <picture>
-                                                <img src="img/product-related/product-related-demo.jpg" alt="">
-                                            </picture>
-                                        </a>
-                                    </div>
-                                    <div class="product-detail">
-                                        <div class="box-proDetail">
-                                            <h3 class="pro-name">
-                                                <a href="">Balo Vải Mèo Neko</a>
-                                            </h3>
-                                            <div class="box-proPrice">
-                                                <p class="pro-pice">
-                                                    <span>450,000đ</span>
-                                                </p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="pro-loop">
-                                <div class="product-block">
-                                    <div class="product-img">
-                                        <div class="sold-out">
-                                            <span>Hết hàng</span>
-                                        </div>
-                                        <a href="">
-                                            <picture>
-                                                <img src="img/product-related/product-related-demo.jpg" alt="">
-                                            </picture>
-                                        </a>
-                                    </div>
-                                    <div class="product-detail">
-                                        <div class="box-proDetail">
-                                            <h3 class="pro-name">
-                                                <a href="">Balo Vải Mèo Neko</a>
-                                            </h3>
-                                            <div class="box-proPrice">
-                                                <p class="pro-pice">
-                                                    <span>450,000đ</span>
-                                                </p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="pro-loop">
-                                <div class="product-block">
-                                    <div class="product-img">
-                                        <div class="sold-out">
-                                            <span>Hết hàng</span>
-                                        </div>
-                                        <a href="">
-                                            <picture>
-                                                <img src="img/product-related/product-related-demo.jpg" alt="">
-                                            </picture>
-                                        </a>
-                                    </div>
-                                    <div class="product-detail">
-                                        <div class="box-proDetail">
-                                            <h3 class="pro-name">
-                                                <a href="">Balo Vải Mèo Neko</a>
-                                            </h3>
-                                            <div class="box-proPrice">
-                                                <p class="pro-pice">
-                                                    <span>450,000đ</span>
-                                                </p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="pro-loop">
-                                <div class="product-block">
-                                    <div class="product-img">
-                                        <div class="sold-out">
-                                            <span>Hết hàng</span>
-                                        </div>
-                                        <a href="">
-                                            <picture>
-                                                <img src="img/product-related/product-related-demo.jpg" alt="">
-                                            </picture>
-                                        </a>
-                                    </div>
-                                    <div class="product-detail">
-                                        <div class="box-proDetail">
-                                            <h3 class="pro-name">
-                                                <a href="">Balo Vải Mèo Neko</a>
-                                            </h3>
-                                            <div class="box-proPrice">
-                                                <p class="pro-pice">
-                                                    <span>450,000đ</span>
-                                                </p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="pro-loop">
-                                <div class="product-block">
-                                    <div class="product-img">
-                                        <div class="sold-out">
-                                            <span>Hết hàng</span>
-                                        </div>
-                                        <a href="">
-                                            <picture>
-                                                <img src="img/product-related/product-related-demo.jpg" alt="">
-                                            </picture>
-                                        </a>
-                                    </div>
-                                    <div class="product-detail">
-                                        <div class="box-proDetail">
-                                            <h3 class="pro-name">
-                                                <a href="">Balo Vải Mèo Neko</a>
-                                            </h3>
-                                            <div class="box-proPrice">
-                                                <p class="pro-pice">
-                                                    <span>450,000đ</span>
-                                                </p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="pro-loop">
-                                <div class="product-block">
-                                    <div class="product-img">
-                                        <div class="sold-out">
-                                            <span>Hết hàng</span>
-                                        </div>
-                                        <a href="">
-                                            <picture>
-                                                <img src="img/product-related/product-related-demo.jpg" alt="">
-                                            </picture>
-                                        </a>
-                                    </div>
-                                    <div class="product-detail">
-                                        <div class="box-proDetail">
-                                            <h3 class="pro-name">
-                                                <a href="">Balo Vải Mèo Neko</a>
-                                            </h3>
-                                            <div class="box-proPrice">
-                                                <p class="pro-pice">
-                                                    <span>450,000đ</span>
-                                                </p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="pro-loop">
-                                <div class="product-block">
-                                    <div class="product-img">
-                                        <div class="sold-out">
-                                            <span>Hết hàng</span>
-                                        </div>
-                                        <a href="">
-                                            <picture>
-                                                <img src="img/product-related/product-related-demo.jpg" alt="">
-                                            </picture>
-                                        </a>
-                                    </div>
-                                    <div class="product-detail">
-                                        <div class="box-proDetail">
-                                            <h3 class="pro-name">
-                                                <a href="">Balo Vải Mèo Neko</a>
-                                            </h3>
-                                            <div class="box-proPrice">
-                                                <p class="pro-pice">
-                                                    <span>450,000đ</span>
-                                                </p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="pro-loop">
-                                <div class="product-block">
-                                    <div class="product-img">
-                                        <div class="sold-out">
-                                            <span>Hết hàng</span>
-                                        </div>
-                                        <a href="">
-                                            <picture>
-                                                <img src="img/product-related/product-related-demo.jpg" alt="">
-                                            </picture>
-                                        </a>
-                                    </div>
-                                    <div class="product-detail">
-                                        <div class="box-proDetail">
-                                            <h3 class="pro-name">
-                                                <a href="">Balo Vải Mèo Neko</a>
-                                            </h3>
-                                            <div class="box-proPrice">
-                                                <p class="pro-pice">
-                                                    <span>450,000đ</span>
-                                                </p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="pro-loop">
-                                <div class="product-block">
-                                    <div class="product-img">
-                                        <div class="sold-out">
-                                            <span>Hết hàng</span>
-                                        </div>
-                                        <a href="">
-                                            <picture>
-                                                <img src="img/product-related/product-related-demo.jpg" alt="">
-                                            </picture>
-                                        </a>
-                                    </div>
-                                    <div class="product-detail">
-                                        <div class="box-proDetail">
-                                            <h3 class="pro-name">
-                                                <a href="">Balo Vải Mèo Neko</a>
-                                            </h3>
-                                            <div class="box-proPrice">
-                                                <p class="pro-pice">
-                                                    <span>450,000đ</span>
-                                                </p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+                        <?php
+                            //Lấy 10 sản phẩm có liên quan
+                            $nums_relate_products = 10;
+                            $query_relate_products = "SELECT * FROM Product WHERE id_category = {$result_product['id_category']} ORDER BY RAND() LIMIT {$nums_relate_products}";
+                            $result_query_relate_products = mysqli_query($conn, $query_relate_products);
+
+                            while ($row = $result_query_relate_products->fetch_assoc()) {
+                                echo '<div class="pro-loop">';
+                                    echo '<div class="product-block">';
+                                        echo '<div class="product-img">';
+                                            echo '<div class="sold-out">';
+                                                if ($row['quantity_in_stock'] == 0) {
+                                                    echo '<span>Hết hàng</span>';
+                                                }
+                                            echo '</div>';  
+                                            echo '<a href="./product.php?product_id=' . $row['product_id'] . '">';
+                                                echo '<picture>';
+                                                    $query_relate_img = "SELECT * FROM `Product-Images` WHERE id_product = {$row['product_id']} GROUP BY id_product";
+                                                    $result_query_relate_img = mysqli_query($conn, $query_relate_img);
+                                                    $result_relate_img = $result_query_relate_img->fetch_assoc();
+                                                    echo '<img src="img/prdImg/' . $result_relate_img['img_name'] . '" alt="">';
+                                                echo '</picture>';
+                                            echo '</a>';
+                                        echo '</div>';  
+                                        echo '<div class="product-detail">';
+                                            echo '<div class="box-proDetail">';
+                                                echo '<h3 class="pro-name">';
+                                                    echo '<a href="./product.php?product_id=' . $row['product_id'] . '">' . $row['product_name'] . '</a>';
+                                                echo '</h3>';
+                                            echo '</div>'; 
+                                            echo '<div class="box-proPrice">';
+                                                echo '<p class="pro-pice">';
+                                                    echo '<span>' . number_format($row['product_price'], 0, ',', '.') . '₫</span>';
+                                                echo '</p>';
+                                            echo '</div>'; 
+                                        echo '</div>'; 
+                                    echo '</div>';    
+                                echo '</div>';
+                            }
+                        ?>
                         </div>
                     </div>
                 </div>
@@ -450,4 +195,7 @@
         require_once "./template/site-nav.php";
     ?>
 </body>
+    <?php
+        $conn->close();
+    ?>
 </html>
