@@ -107,9 +107,9 @@
             <div class="site-nav-container-last">
                 <p class="title">Tìm kiếm</p>
                 <div class="search-box-wrap">
-                    <form class="searchForm" action="">
+                    <form class="searchForm" action="search.php?q='keyword'" method="GET">
                         <div class="search-inner">
-                            <input type="text" class="searchInput" size="20" placeholder="Tìm kiếm sản phẩm">
+                            <input type="text" class="searchInput" size="20" name="q" placeholder="Tìm kiếm sản phẩm">
                         </div>
                         <button class="btn-search">
                             <ion-icon name="search-outline"></ion-icon>
@@ -117,69 +117,32 @@
                     </form>
                     <div class="result-wrap">
                         <div class="result-content">
-                            <div class="item-ult">
-                                <div class="thumbs">
-                                    <a href="">
-                                        <img src="img/demo-result/demo-result.jpg" alt="">
-                                    </a>
-                                </div>
-                                <div class="title">
-                                    <a href="">Vòng An</a>
-                                    <p class="f-initial">193,000đ</p>
-                                </div>
-                            </div>
-                            <div class="item-ult">
-                                <div class="thumbs">
-                                    <a href="">
-                                        <img src="img/demo-result/demo-result.jpg" alt="">
-                                    </a>
-                                </div>
-                                <div class="title">
-                                    <a href="">Vòng An</a>
-                                    <p class="f-initial">193,000đ</p>
-                                </div>
-                            </div>
-                            <div class="item-ult">
-                                <div class="thumbs">
-                                    <a href="">
-                                        <img src="img/demo-result/demo-result.jpg" alt="">
-                                    </a>
-                                </div>
-                                <div class="title">
-                                    <a href="">Vòng An</a>
-                                    <p class="f-initial">193,000đ</p>
-                                </div>
-                            </div>
-                            <div class="item-ult">
-                                <div class="thumbs">
-                                    <a href="">
-                                        <img src="img/demo-result/demo-result.jpg" alt="">
-                                    </a>
-                                </div>
-                                <div class="title">
-                                    <a href="">Vòng An</a>
-                                    <p class="f-initial">193,000đ</p>
-                                </div>
-                            </div>
-                            <div class="item-ult">
-                                <div class="thumbs">
-                                    <a href="">
-                                        <img src="img/demo-result/demo-result.jpg" alt="">
-                                    </a>
-                                </div>
-                                <div class="title">
-                                    <a href="">Vòng An</a>
-                                    <p class="f-initial">193,000đ</p>
-                                </div>
-                            </div>
-                            <div class="resultMore">
-                                <a href="">Xem thêm 193 sản phẩm</a>
-                            </div>
+                            <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+                            <script>
+                                $(document).ready(function(){
+                                    $('.searchInput').keyup(function(){
+                                        var keyword = $(this).val();
+                                        if(keyword != ''){
+                                            $.ajax({
+                                            url: 'function/search_result.php',
+                                            type: 'post',
+                                            data: {keyword:keyword},
+                                            success:function(response){
+                                                $('.result-content').html(response);
+                                            }
+                                            });
+                                        } else {
+                                            $('.result-content').html('');
+                                        }
+                                    });
+                                });
+                            </script>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
+
         <button id="site-close-handle" class="site-close-handle">
             <span class="close">
                 <ion-icon name="close-outline"></ion-icon>

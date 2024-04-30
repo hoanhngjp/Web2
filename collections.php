@@ -1,3 +1,6 @@
+<?php
+    session_start();
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -166,9 +169,9 @@
                             echo '</div>';
                             echo '<div class="item-detail">';
                                 echo '<h3>';
-                                    echo '<a href="">' . $row['product_name'] . '</a>';
+                                    echo '<a href="./product.php?product_id=' . $row['product_id']. ' ">' . $row['product_name'] . '</a>';
                                 echo '</h3>';
-                                echo '<p class="item-price">' . number_format($row['product_price'], 0, ',', '.') . '₫</p>';
+                                echo '<p class="item-price">'. number_format($row['product_price'], 0, ',', '.') . '₫</p>';
                             echo '</div>';
                         echo '</div>';
                     }

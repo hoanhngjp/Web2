@@ -1,3 +1,6 @@
+<?php
+    session_start();
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -16,9 +19,6 @@
     <script src="js/validLoginAndRegistry.js?v=<?php echo time();?>" defer></script>
 </head>
 <body>
-    <?php
-        session_start();
-    ?>
     <div class="main-body">
         <!--------------------------------------------HEADER----------------------------------------------------->
         <?php

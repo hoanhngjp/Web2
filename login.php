@@ -1,3 +1,6 @@
+<?php
+    session_start();
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -16,9 +19,6 @@
     <script src="js/validLoginAndRegistry.js?v=<?php echo time();?>" defer></script>
 </head>
 <body>
-    <?php
-        session_start();
-    ?>
     <div class="main-body">
         <!--------------------------------------------HEADER----------------------------------------------------->
         <?php
@@ -33,10 +33,15 @@
             </div>
             <div class="form-wrap"> 
                 <div class="form">
-                    <form action="" method="post" onsubmit="return checkLogin()">
-                        <div class="errors-wrap">
-                            <span class="show-error" id="error-all">*Thông tin đăng nhập không hợp lệ<br>Mời bạn kiểm tra lại</span>
-                        </div>
+                    <form action="./function/login_function.php" method="post" onsubmit="return checkLogin()">
+                    <?php
+                        if(isset($_GET['fail'])) {
+                            echo '<div class="errors-wrap">';
+                                echo '<span class="show-error" id="error-all" style="display: block;">*Thông tin đăng nhập không hợp lệ<br>Mời bạn kiểm tra lại</span>';
+                            echo '</div>';
+                        }
+                    ?>  
+                            
                         <div class="input-wrap">
                             <input type="email" name="email" id="email" placeholder="Email">
                         </div>

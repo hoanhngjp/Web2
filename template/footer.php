@@ -19,13 +19,13 @@
                             <div class="footer-content">
                                 <ul>
                                     <li class="items">
-                                        <a href="">Tìm kiếm</a>
+                                        <a href="search.php">Tìm kiếm</a>
                                     </li>
                                     <li class="items">
-                                        <a href="">Giới thiệu</a>
+                                        <a href="#">Giới thiệu</a>
                                     </li>
                                     <li class="items">
-                                        <a href="">Chính sách đổi trả</a>
+                                        <a href="#">Chính sách đổi trả</a>
                                     </li>
                                 </ul>
                             </div>

@@ -1,3 +1,6 @@
+<?php
+    session_start();
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -12,9 +15,6 @@
     <script src="js/showCheckOutMethods.js" defer></script>
 </head>
 <body>
-    <?php
-        session_start();
-    ?>
     <!--------------------------------------------CHECKOUT-CONTENT----------------------------------------------------->
         <div class="checkout-wrap">
             <div class="checkout-main">

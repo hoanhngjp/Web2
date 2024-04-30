@@ -58,7 +58,14 @@
             </div>
             <div class="headerOthers">
                 <ul class="others">
-                    <li><a href="login.php"><ion-icon name="person-circle-outline"></ion-icon></a></li>
+                    <?php
+                        if (isset($_SESSION['logged']) && $_SESSION['logged'] === true) {
+                            echo '<li><a href="account.php"><ion-icon name="person-circle-outline"></ion-icon></a></li>';
+                        }
+                        else {
+                            echo '<li><a href="login.php"><ion-icon name="person-circle-outline"></ion-icon></a></li>';
+                        }
+                    ?>
                     <li><a href="" id="open-site-search"><ion-icon name="search-outline"></ion-icon></a></li>
                     <li>
                         <a href="" id="open-site-cart">

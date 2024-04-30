@@ -1,3 +1,15 @@
+<?php
+    session_start();
+    /*if ($_SESSION['logged'] && $_SESSION['email'] && $_SESSION['fullname'] && $_SESSION['addresses']) {
+        echo $_SESSION['logged'];
+        echo '<br>';
+        echo $_SESSION['email'];
+        echo '<br>';
+        echo $_SESSION['fullname'];
+        echo '<br>';
+        echo $_SESSION['addresses'];
+    }*/
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -11,13 +23,10 @@
     <link rel="stylesheet" href="css/account.css?v=<?php echo time();?>">
     <link rel="stylesheet" href="css/cart-search.css?v=<?php echo time();?>">
     <title>Tài khoản</title>
-    <link rel="icon" type="image/x-icon" href="../img/footerLogo.webp">
+    <link rel="icon" type="image/x-icon" href="./img/footerLogo.webp">
     <script src="js/showCartSearch.js?v=<?php echo time();?>" defer></script>
 </head>
 <body>
-    <?php
-        session_start();
-    ?>
     <div id="main-body" class="main-body">
         <!--------------------------------------------HEADER----------------------------------------------------->
         <?php
@@ -39,8 +48,8 @@
                                         <li>
                                             <a href="">Thông tin tài khoản</a>
                                         </li>
-                                        <li><a href="">Danh sách địa chỉ</a></li>
-                                        <li><a href="">Đăng xuất</a></li>
+                                        <li><a href="./address.php">Danh sách địa chỉ</a></li>
+                                        <li><a href="./function/log_out.php">Đăng xuất</a></li>
                                     </ul>
                                 </div>
                             </div>
@@ -50,14 +59,24 @@
                         <div class="row-inside">
                             <div class="customer-sidebar">
                                 <p class="title-detail">Thông tin tài khoản</p>
-                                <h2 class="account-name">La Hoành Nghiệp</h2>
-                                <p class="account-email">hoanhnghiep2704@gmail.com</p>
+                                <?php
+                                    if (isset($_SESSION['logged']) && isset($_SESSION['email']) && isset($_SESSION['fullname'])) {
+                                        echo '<h2 class="account-name">'. $_SESSION['fullname'] .'</h2>';
+                                        echo '<p class="account-email">'. $_SESSION['email'] .'</p>';
+                                    }
+                                    else {
+                                        echo 'Chưa có dữ liệu';
+                                    }
+                                ?>
+                                
+                                
                                 <div class="address">
-                                    <a id="view-address" href="">Xem địa chỉ</a>
+                                    <a id="view-address" href="./address.php">Xem địa chỉ</a>
                                 </div>
                             </div>
                             <div class="customer-table-wrap">
                                 <div class="customer-table-bg">
+                                    <p>Bạn chưa đặt mua sản phẩm</p>
                                     <p class="title-detail"> Danh sách đơn hàng mới nhất </p>
                                     <div class="table-wrap">
                                         <table class="table">

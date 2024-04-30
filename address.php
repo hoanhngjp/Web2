@@ -1,3 +1,6 @@
+<?php
+    session_start();
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -16,9 +19,7 @@
     <script src="js/showEditAddAddress.js" defer></script>
 </head>
 <body>
-    <?php
-        session_start();
-    ?>
+
     <div class="main-body">
         <!--------------------------------------------HEADER----------------------------------------------------->
         <?php
@@ -40,8 +41,8 @@
                                         <li>
                                             <a href="">Thông tin tài khoản</a>
                                         </li>
-                                        <li><a href="">Danh sách địa chỉ</a></li>
-                                        <li><a href="">Đăng xuất</a></li>
+                                        <li><a href="./address.php">Danh sách địa chỉ</a></li>
+                                        <li><a href="./function/log_out.php">Đăng xuất</a></li>
                                     </ul>
                                 </div>
                             </div>
@@ -50,13 +51,16 @@
                     <div class="content-wrap">
                         <div class="">
                             <div class="content-page">
+                    <?php
+                        if (isset($_SESSION['addresses']) && !empty($_SESSION['addresses'])) {        
+                            foreach ($_SESSION['addresses'] as $address) { ?>
                                 <div class="address-table-wrap">
                                     <div id="address-table">
                                         <div class="row">
                                             <div class="address-title-wrap">
                                                 <div class="address-title">
                                                     <h3>
-                                                        <strong>La Hoành Nghiệp</strong>
+                                                        <strong><?php echo isset($address['adrs_fullname']) ? $address['adrs_fullname'] : ''; ?></strong>
                                                     </h3>
                                                     <p class="adrress_actions">
                                                         <span class="action_link action_edit">
@@ -80,7 +84,7 @@
                                                     <div class="customer-infor-wrap">
                                                         <div class="customer_name row">
                                                             <p>
-                                                                <strong>La Hoành Nghiệp</strong>
+                                                                <strong><?php echo isset($address['adrs_fullname']) ? $address['adrs_fullname'] : ''; ?></strong>
                                                             </p>
                                                         </div>
                                                         <div class="customer_name_infor"></div>
@@ -92,9 +96,7 @@
                                                             </p>
                                                         </div>
                                                         <div class="customer_address_infor">
-                                                            <p>439/41 Hồ Học Lãm, Phường An Lạc, Quận Bình Tân, Thành phố Hồ Chí Minh</p>
-                                                            <p></p>
-                                                            <p>, Vietnam</p>
+                                                            <p><?php echo isset($address['adrs_address']) ? $address['adrs_address'] : ''; ?></p>
                                                         </div>
                                                     </div>
                                                     <div class="customer-infor-wrap">
@@ -104,37 +106,38 @@
                                                             </p>
                                                         </div>
                                                         <div class="customer_phone_infor">
-                                                            <p>0832963381</p>
+                                                            <p><?php echo isset($address['adrs_phone']) ? $address['adrs_phone'] : ''; ?></p>
                                                         </div>
                                                     </div>
                                                 </div>
                                             </div>
                                             <!--Bảng sửa địa chỉ-->
                                             <div id="edit_address" class="customer_address edit_address" style="display: none;">
-                                                <form id="address_form" accept-charset="UTF-8" action="">
+                                                <form id="address_form" accept-charset="UTF-8" action="./function/update_address.php" method="POST">
+                                                <input type="hidden" name="address_list_id" value="<?php echo isset($address['adrs_id']) ? $address['adrs_id'] : ''; ?>">
                                                     <div class="input-group">
                                                         <span class="input-group-addon">
                                                             <ion-icon name="person-circle-outline"></ion-icon>
                                                         </span>
-                                                        <input id="address_fullname" class="form-control textbox" type="text" size="40" value="La Hoành Nghiệp" placeholder="Họ Tên">
+                                                        <input id="address_fullname" class="form-control textbox" name="adrs_fullname" type="text" size="40" value="<?php echo isset($address['adrs_fullname']) ? $address['adrs_fullname'] : ''; ?>" placeholder="Họ Tên">
                                                     </div>
                                                     <div class="input-group">
                                                         <span class="input-group-addon">
                                                             <ion-icon name="home-outline"></ion-icon>
                                                         </span>
-                                                        <input id="address_address" class="form-control textbox" type="text" size="40" value="439/41 Hồ Học Lãm, P. An Lạc, Q. Bình Tân, TP. Hồ Chí Minh" placeholder="Địa chỉ">
+                                                        <input id="address_address" class="form-control textbox" name="adrs_address" type="text" size="40" value="<?php echo isset($address['adrs_address']) ? $address['adrs_address'] : ''; ?>" placeholder="Địa chỉ">
                                                     </div>
                                                     <div class="input-group">
                                                         <span class="input-group-addon">
                                                             <ion-icon name="person-circle-outline"></ion-icon>
                                                         </span>
-                                                        <input id="address_phone" class="form-control textbox" type="text" size="40" value="0832963381" placeholder="Số điện thoại">
+                                                        <input id="address_phone" class="form-control textbox" name="adrs_phone" type="text" size="40" value="<?php echo isset($address['adrs_phone']) ? $address['adrs_phone'] : ''; ?>" placeholder="Số điện thoại">
                                                     </div>
                                                     <div class="action_bottom">
                                                         <input type="submit" class="btn bt-primary" value="CẬP NHẬT">
                                                         <span>
                                                             hoặc
-                                                            <a href="">Hủy</a>
+                                                            <a href="#">Hủy</a>
                                                         </span>
                                                     </div>
                                                 </form>
@@ -142,6 +145,11 @@
                                         </div>
                                     </div>
                                 </div>
+                            <?php } 
+                        } else {
+                            // Hiển thị thông báo nếu không có địa chỉ nào được lưu trong session
+                            echo "Không có địa chỉ nào được lưu.";
+                        } ?>
                             </div>
                         </div>
                     </div>
