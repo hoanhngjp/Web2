@@ -14,7 +14,6 @@ document.addEventListener('DOMContentLoaded', function() {
                     });
                     subMenu.classList.add('active'); // Hiển thị sub-menu
                 }
-                event.preventDefault(); // Chỉ chặn hành động mặc định của thẻ a trong menu-item đã nhấp vào
             }
         });
     });

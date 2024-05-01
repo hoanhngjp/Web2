@@ -100,7 +100,8 @@
                     while ($row = $result->fetch_assoc()) {
                         echo '<li class="menu-item">';
                             if (hasSubCategories($row['category_id'])){
-                                echo '<a href="./collections.php?category_id=' . $row['category_id'] . '">'. $row['category_name'] . '<ion-icon name="remove-outline"></ion-icon></a>';
+                                echo '<a href="./collections.php?category_id=' . $row['category_id'] . '">'. $row['category_name'] . '</a>';
+                                echo '<ion-icon name="remove-outline"></ion-icon>';
                             }
                             else {
                                 echo '<a href="./collections.php?category_id=' . $row['category_id'] . '">'. $row['category_name'] . '</a>';

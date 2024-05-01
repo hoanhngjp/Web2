@@ -9,10 +9,10 @@
     <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
     <script src="https://kit.fontawesome.com/39b6b90061.js" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="../css/header.css?v=<?php echo time();?>">
-    <link rel="stylesheet" href="../css/footer.css?v=<?php echo time();?>">
-    <link rel="stylesheet" href="../css/cart-search.css?v=<?php echo time();?>">
-    <link rel="stylesheet" href="../css/cart.css?v=<?php echo time();?>">
+    <link rel="stylesheet" href="./css/header.css?v=<?php echo time();?>">
+    <link rel="stylesheet" href="./css/footer.css?v=<?php echo time();?>">
+    <link rel="stylesheet" href="./css/cart-search.css?v=<?php echo time();?>">
+    <link rel="stylesheet" href="./css/cart.css?v=<?php echo time();?>">
     <title>Giỏ hàng</title>
     <link rel="icon" type="image/x-icon" href="../img/footerLogo.webp">
     <script src="../js/showCartSearch.js" defer></script>
