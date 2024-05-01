@@ -191,11 +191,11 @@ html, body{
     margin-top: 15px;
 }
 
-.quatity-area{
+.quantity-area{
     margin-bottom: 15px;
 }
 
-.quatity-area input.qty-btn{
+.quantity-area input.qty-btn{
     background: #f5f5f5;
     border: solid 1px #f5f5f5;
     cursor: pointer;
@@ -208,7 +208,7 @@ html, body{
     border-radius: 0;
 }
 
-.quatity-area input#quatity{
+.quantity-area input#quantity{
     background: #fff;
     font-weight: 600;
     height: 32px;

@@ -15,7 +15,8 @@
     <link rel="stylesheet" href="css/cart-search.css?v=<?php echo time();?>">
     <title>Sản phẩm</title>
     <link rel="icon" type="image/x-icon" href="img/footerLogo.webp">
-    <script src="js/showCartSearch.js" defer></script>
+    <script src="js/showCartSearch.js?v=<?php echo time();?>" defer></script>
+    <script src="js/product_function.js?v=<?php echo time();?>" defer></script>
 </head>
 <body>
     
@@ -114,9 +115,9 @@
                              </div>
                              <form class="form-add-item" action="">
                                 <div class="selector-actions">
-                                    <div class="quatity-area">
+                                    <div class="quantity-area">
                                         <input id="minusBtn" class="qty-btn" type="button" value="-">
-                                        <input type="text" id="quatity" class="quantity-selector" name="quatity" value="1" min="1">
+                                        <input type="text" id="quantity" class="quantity-selector" name="quatity" value="1" min="1">
                                         <input id="plusBtn" class="qty-btn" type="button" value="+">
                                     </div>
                                     <div class="wrap-addcart">
