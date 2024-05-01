@@ -113,7 +113,7 @@
                              <div class="product-price">
                                 <span class="pro-price"><?php echo number_format($result_product['product_price'], 0, ',', '.') . '₫' ?></span>
                              </div>
-                             <form class="form-add-item" action="">
+                             <form class="form-add-item" action="./function/add_to_cart.php" method="POST">
                                 <div class="selector-actions">
                                     <div class="quantity-area">
                                         <input id="minusBtn" class="qty-btn" type="button" value="-">
@@ -121,7 +121,7 @@
                                         <input id="plusBtn" class="qty-btn" type="button" value="+">
                                     </div>
                                     <div class="wrap-addcart">
-                                        <button type="button" id="add-to-cart" class="addToCartProduct">Thêm vào giỏ</button>
+                                        <button type="submit" id="add-to-cart" class="addToCartProduct">Thêm vào giỏ</button>
                                     </div>
                                 </div>
                              </form>

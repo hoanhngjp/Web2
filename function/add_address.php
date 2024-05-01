@@ -5,6 +5,7 @@
     if (!isset($_SESSION['logged']) || $_SESSION['logged'] !== true) {
         exit();
     }
+
     // Xử lý form cập nhật địa chỉ khi người dùng nhấn nút "CẬP NHẬT"
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
         require_once "../function/db_connect.php";
@@ -13,18 +14,24 @@
         $id_user = $_SESSION['user_id'];
 
         // Lấy dữ liệu từ form
-        $address_list_id = $_POST['address_list_id'];
-        $adrs_fullname = $_POST['adrs_fullname'];
-        $adrs_address = $_POST['adrs_address'];
-        $adrs_phone = $_POST['adrs_phone'];
+        $adrs_fullname = $_POST['address_fullname'];
+        $adrs_address = $_POST['address_address'];
+        $adrs_phone = $_POST['address_phone'];
 
         // Kiểm tra checkbox được chọn hay không
         $adrs_isDefault = isset($_POST['address_default']) ? 1 : 0;
 
-        $query_update = "UPDATE `Address-List`
-        SET adrs_fullname = '$adrs_fullname', adrs_address = '$adrs_address', adrs_phone = '$adrs_phone', adrs_isDefault = $adrs_isDefault
-        WHERE adrs_id = '$address_list_id'";
-        if (mysqli_query($conn, $query_update)) {
+        // Nếu checkbox được chọn, thực hiện cập nhật `adrs_isDefault` cho các địa chỉ khác
+        if ($adrs_isDefault == 1) {
+            $query_update_default = "UPDATE `Address-List` SET adrs_isDefault = 0 WHERE id_user = '$id_user'";
+            mysqli_query($conn, $query_update_default);
+        }
+        
+        // Tiếp tục thêm địa chỉ mới vào cơ sở dữ liệu
+        $query_insert_address = "INSERT INTO `Address-List`(id_user, adrs_fullname, adrs_address, adrs_phone, adrs_isDefault)
+        VALUES ('$id_user', '$adrs_fullname', '$adrs_address', '$adrs_phone', '$adrs_isDefault')";
+
+        if (mysqli_query($conn, $query_insert_address)) {
             $query_addressinfo = "SELECT * FROM `Address-List` WHERE id_user = '$id_user'";
             $result_query_addressinfo = mysqli_query($conn, $query_addressinfo);
             $addresses =array();
@@ -45,19 +52,11 @@
             
             $conn->close();
             header("Location: ../address.php");
-        } 
+        }
         else {
             echo 'Lỗi';
             $conn->close();
         }
-
         $conn->close();
-        // Thực hiện các thao tác kiểm tra và cập nhật dữ liệu vào cơ sở dữ liệu
-        // (Viết code xử lý cập nhật dữ liệu vào cơ sở dữ liệu ở đây)
-
-        // Sau khi cập nhật thành công, bạn có thể chuyển hướng người dùng đến trang khác hoặc hiển thị thông báo cập nhật thành công
-        // Ví dụ:
-        // header("Location: success.php");
-        // exit();
     }
 ?>

@@ -15,8 +15,9 @@
     <link rel="stylesheet" href="css/cart-search.css?v=<?php echo time();?>">
     <title>Tài khoản</title>
     <link rel="icon" type="image/x-icon" href="img/footerLogo.webp">
-    <script src="js/showCartSearch.js" defer></script>
-    <script src="js/showEditAddAddress.js" defer></script>
+    <script src="js/showCartSearch.js?v=<?php echo time();?>" defer></script>
+    <script src="js/showEditAddAddress.js?v=<?php echo time();?>" defer></script>
+    <script src="js/delete_address.js?v=<?php echo time();?>" defer></script>
 </head>
 <body>
 
@@ -69,7 +70,7 @@
                                                             </a>
                                                         </span>
                                                         <span class="action_link action_delete">
-                                                            <a href="">
+                                                            <a href="#" class="delete-address" data-address-id="<?php echo isset($address['adrs_id']) ? $address['adrs_id'] : ''; ?>">
                                                                 <i class="fa fa-times" aria-hidden="true"></i>
                                                             </a>
                                                         </span>
@@ -114,7 +115,7 @@
                                             <!--Bảng sửa địa chỉ-->
                                             <div id="edit_address" class="customer_address edit_address" style="display: none;">
                                                 <form id="address_form" accept-charset="UTF-8" action="./function/update_address.php" method="POST">
-                                                <input type="hidden" name="address_list_id" value="<?php echo isset($address['adrs_id']) ? $address['adrs_id'] : ''; ?>">
+                                                    <input type="hidden" name="address_list_id" value="<?php echo isset($address['adrs_id']) ? $address['adrs_id'] : ''; ?>">
                                                     <div class="input-group">
                                                         <span class="input-group-addon">
                                                             <ion-icon name="person-circle-outline"></ion-icon>
@@ -132,6 +133,15 @@
                                                             <ion-icon name="person-circle-outline"></ion-icon>
                                                         </span>
                                                         <input id="address_phone" class="form-control textbox" name="adrs_phone" type="text" size="40" value="<?php echo isset($address['adrs_phone']) ? $address['adrs_phone'] : ''; ?>" placeholder="Số điện thoại">
+                                                    </div>
+                                                    <div class="input-group">
+                                                        <?php if(isset($address['adrs_isDefault']) && $address['adrs_isDefault'] == 1 ) {
+                                                            echo '<input type="checkbox" id="address_default_address_new" name="address_default" value="1" checked>';
+                                                        }
+                                                        else {
+                                                            echo '<input type="checkbox" id="address_default_address_new" name="address_default" value="1">';
+                                                        } ?>
+                                                        <label for="address_default">Đặt làm địa chỉ mặc định</label>
                                                     </div>
                                                     <div class="action_bottom">
                                                         <input type="submit" class="btn bt-primary" value="CẬP NHẬT">
@@ -156,24 +166,28 @@
                     <div class="add-address-wrap">
                         <a href="#" id="add-new-address" class="add-new-address">Nhập địa chỉ mới</a>
                         <div id="add_address" class="customer_address edit_address" style="display: none;">
-                            <form accept-charset="UTF-8" action="" id="address_form_new">
+                            <form accept-charset="UTF-8" action="./function/add_address.php" id="address_form_new" method="POST">
                                 <div class="input-group">
                                     <span class="input-group-addon">
                                         <ion-icon name="person-circle-outline"></ion-icon>
                                     </span>
-                                    <input id="address_fullname" class="form-control textbox" type="text" size="40" value="" placeholder="Họ Tên">
+                                    <input id="address_fullname" name="address_fullname" class="form-control textbox" type="text" size="40" value="" placeholder="Họ Tên">
                                 </div>
                                 <div class="input-group">
                                     <span class="input-group-addon">
                                         <ion-icon name="home-outline"></ion-icon>
                                     </span>
-                                    <input id="address_address" class="form-control textbox" type="text" size="40" value="" placeholder="Địa chỉ">
+                                    <input id="address_address" name="address_address" class="form-control textbox" type="text" size="40" value="" placeholder="Địa chỉ">
                                 </div>
                                 <div class="input-group">
                                     <span class="input-group-addon">
                                         <ion-icon name="person-circle-outline"></ion-icon>
                                     </span>
-                                    <input id="address_phone" class="form-control textbox" type="text" size="40" value="" placeholder="Số điện thoại">
+                                    <input id="address_phone" name="address_phone" class="form-control textbox" type="text" size="40" value="" placeholder="Số điện thoại">
+                                </div>
+                                <div class="input-group">
+                                    <input type="checkbox" id="address_default_address_new" name="address_default" value="1">
+                                    <label for="address_default">Đặt làm địa chỉ mặc định</label>
                                 </div>
                                 <div class="action_bottom">
                                     <input type="submit" class="btn bt-primary" value="THÊM MỚI">

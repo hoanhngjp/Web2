@@ -1,19 +1,23 @@
-var viewAddress = document.querySelector(".view_address");
-var editAddress = document.getElementById("edit_address");
-var showEdit = document.querySelector(".showEdit");
-
 document.addEventListener("DOMContentLoaded", function() {
-    showEdit.addEventListener("click", function(event) {
-        event.preventDefault();
-        if (viewAddress.style.display == "none"){
-            viewAddress.style.display = "block";
-            editAddress.style.display = "none";
-        } else{
-            viewAddress.style.display = "none";
-            editAddress.style.display = "block";
-        }
-    })
-})
+    var showEditButtons = document.querySelectorAll(".showEdit");
+
+    showEditButtons.forEach(function(button) {
+        button.addEventListener("click", function(event) {
+            event.preventDefault();
+            var parentDiv = button.closest('.address-table-wrap');
+            var viewAddress = parentDiv.querySelector(".view_address");
+            var editAddress = parentDiv.querySelector(".edit_address");
+
+            if (viewAddress.style.display === "none") {
+                viewAddress.style.display = "block";
+                editAddress.style.display = "none";
+            } else {
+                viewAddress.style.display = "none";
+                editAddress.style.display = "block";
+            }
+        });
+    });
+});
 
 var showAddNewAddress = document.getElementById("add-new-address");
 var addAddressDiv = document.getElementById("add_address");
