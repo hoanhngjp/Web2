@@ -31,4 +31,10 @@
         return $child_categories;
     }
 
+    function getBill($conn, $user_id) {
+        $query = "SELECT * FROM Bill WHERE id_user = '$user_id'";
+        $result = mysqli_query($conn, $query);
+        return $result;
+    }
+
 ?>

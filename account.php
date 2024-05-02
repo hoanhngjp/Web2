@@ -30,7 +30,11 @@
     <div id="main-body" class="main-body">
         <!--------------------------------------------HEADER----------------------------------------------------->
         <?php
-            require_once "./template/header.php"
+            require_once "./template/header.php";
+            require_once "./function/db_connect.php";
+            $conn = connectDatabase();
+            $user_id = $_SESSION['user_id'];
+
         ?>
         <!--------------------------------------------LAYOUT-ACCOUNT----------------------------------------------------->
         <div class="layout-account">
@@ -46,7 +50,7 @@
                                 <div class="account-list">
                                     <ul>
                                         <li>
-                                            <a href="">Thông tin tài khoản</a>
+                                            <a href="./account.php">Thông tin tài khoản</a>
                                         </li>
                                         <li><a href="./address.php">Danh sách địa chỉ</a></li>
                                         <li><a href="./function/log_out.php">Đăng xuất</a></li>
@@ -76,7 +80,14 @@
                             </div>
                             <div class="customer-table-wrap">
                                 <div class="customer-table-bg">
-                                    <p>Bạn chưa đặt mua sản phẩm</p>
+                                <?php
+                                    require_once "./function/database_function.php";
+                                    $result = getBill($conn, $user_id);
+                                    if (mysqli_num_rows($result) == 0) {
+                                        echo '<p>Bạn chưa đặt mua sản phẩm</p>';
+                                    }
+                                    else {
+                                ?>
                                     <p class="title-detail"> Danh sách đơn hàng mới nhất </p>
                                     <div class="table-wrap">
                                         <table class="table">
@@ -88,43 +99,34 @@
                                                 <th class="fulfillment-status text-center">Vận chuyển</th>
                                             </thead>
                                             <tbody>
-                                                <tr class="order">
-                                                    <td class="text-center">
-                                                        <a href="">#194877</a>
-                                                    </td>
-                                                    <td class="text-center">
-                                                        <span>18/03/2024</span>
-                                                    </td>
-                                                    <td class="text-center">
-                                                        <span class="total-money">360,000đ</span>
-                                                    </td>
-                                                    <td class="text-center">
-                                                        <span class="status-pending">pending</span>
-                                                    </td>
-                                                    <td class="text-center">
-                                                        <span class="status-fulfilled">not fulfilled</span>
-                                                    </td>
-                                                </tr>
-                                                <tr class="order">
-                                                    <td class="text-center">
-                                                        <a href="">#194877</a>
-                                                    </td>
-                                                    <td class="text-center">
-                                                        <span>18/03/2024</span>
-                                                    </td>
-                                                    <td class="text-center">
-                                                        <span class="total-money">360,000đ</span>
-                                                    </td>
-                                                    <td class="text-center">
-                                                        <span class="status-pending">pending</span>
-                                                    </td>
-                                                    <td class="text-center">
-                                                        <span class="status-fulfilled">not fulfilled</span>
-                                                    </td>
-                                                </tr>
+                                            <?php
+                                                while ($row = mysqli_fetch_assoc($result)) {
+                                                    echo '<tr class="order">';
+                                                        echo '<td class="text-center">';
+                                                            echo '<a href="">'. $row['bill_id'] .'</a>';
+                                                        echo '</td>';
+                                                        echo '<td class="text-center">';
+                                                            echo '<span>1'. date("d/m/Y", strtotime($row['date_created'])) .'</span>';
+                                                        echo '</td>';
+                                                        echo '<td class="text-center">';
+                                                            echo '<span class="total-money">'.number_format($row['total_amount'], 0, ',', '.') .'₫</span>';
+                                                        echo '</td>';
+                                                        echo '<td class="text-center">';    
+                                                            echo '<span class="status-'.$row['payment_status'].'">'. $row['payment_status'] .'</span>';
+                                                        echo '</td>';
+                                                        echo '<td class="text-center">';
+                                                            echo '<span class="status-'.$row['shipping_status'].'">'.$row['shipping_status'].'</span>';
+                                                        echo '</td>';
+                                                    echo '</tr>';
+                                                }
+                                            ?>
+
                                             </tbody>
                                         </table>
                                     </div>
+                                <?php
+                                    }
+                                ?>
                                 </div>
                             </div>
                         </div>

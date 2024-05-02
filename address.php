@@ -40,7 +40,7 @@
                                 <div class="account-list">
                                     <ul>
                                         <li>
-                                            <a href="">Thông tin tài khoản</a>
+                                            <a href="./account.php">Thông tin tài khoản</a>
                                         </li>
                                         <li><a href="./address.php">Danh sách địa chỉ</a></li>
                                         <li><a href="./function/log_out.php">Đăng xuất</a></li>
