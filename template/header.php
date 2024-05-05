@@ -10,6 +10,18 @@
         $subResult = $conn->query($subQuery);
         return $subResult->num_rows > 0;
     }
+
+    $count = 0;
+
+    if (!isset($_SESSION['cart']) || count($_SESSION['cart']) == 0 ) {
+        $count = 0;
+    }
+    else {
+        foreach ($_SESSION['cart'] as $product_id => $quantity) {
+            $count += $quantity;
+        }
+    }
+
 ?>
 
 <header>
@@ -71,7 +83,9 @@
                         <a href="" id="open-site-cart">
                             <ion-icon name="bag-outline"></ion-icon>
                             <span class="count-holder">
-                                <span class="count">4</span>
+                                <?php
+                                echo '<span class="count">'. $count .'</span>';                               
+                                ?>
                             </span>
                         </a>
                     </li>

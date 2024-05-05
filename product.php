@@ -1,5 +1,7 @@
 <?php
-    session_start();
+    if (session_status() === PHP_SESSION_NONE) {
+        session_start();
+    }
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -114,10 +116,11 @@
                                 <span class="pro-price"><?php echo number_format($result_product['product_price'], 0, ',', '.') . '₫' ?></span>
                              </div>
                              <form class="form-add-item" action="./function/add_to_cart.php" method="POST">
+                                <input type="hidden" name="product_id" value="<?php echo $result_product['product_id']; ?>">
                                 <div class="selector-actions">
                                     <div class="quantity-area">
                                         <input id="minusBtn" class="qty-btn" type="button" value="-">
-                                        <input type="text" id="quantity" class="quantity-selector" name="quatity" value="1" min="1">
+                                        <input type="text" id="quantity" class="quantity-selector" name="quantity" value="1" min="1">
                                         <input id="plusBtn" class="qty-btn" type="button" value="+">
                                     </div>
                                     <div class="wrap-addcart">
@@ -197,7 +200,4 @@
         require_once "./template/site-nav.php";
     ?>
 </body>
-    <?php
-        $conn->close();
-    ?>
 </html>

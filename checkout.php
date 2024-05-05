@@ -1,5 +1,16 @@
 <?php
-    session_start();
+    if (session_status() === PHP_SESSION_NONE) {
+        session_start();
+    }
+    require_once "./function/db_connect.php";
+    $conn = connectDatabase();
+    echo $_SESSION['billing_address_full_name'];
+    echo $_SESSION['billing_address_phone'];
+    echo $_SESSION['billing_address_address'];
+    echo $_SESSION['bill_note'];
+    echo $_SESSION['total_price'];
+    echo $_SESSION['checkoutMethod']
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -11,8 +22,10 @@
     <script src="https://kit.fontawesome.com/39b6b90061.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="css/checkout.css?v=<?php echo time();?>">
     <title>Thanh toán</title>
-    <link rel="icon" type="image/x-icon" href="../img/footerLogo.webp">
-    <script src="js/showCheckOutMethods.js" defer></script>
+    <link rel="icon" type="image/x-icon" href="./img/footerLogo.webp">
+    <script src="js/showCheckOutMethods.js?v=<?php echo time();?>" defer></script>
+    <script src="js/checkout.js?v=<?php echo time();?>" defer></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 </head>
 <body>
     <!--------------------------------------------CHECKOUT-CONTENT----------------------------------------------------->
@@ -24,10 +37,10 @@
                     </a>
                     <ul class="breadcrumb">
                         <li class="breadcrumb-item">
-                            <a href="">Giỏ hàng</a>
+                            <a href="./cart.php">Giỏ hàng</a>
                         </li>
                         <li class="breadcrumb-item">
-                            <a href="">Thông tin giao hàng</a>
+                            <a href="./orderInfo.php">Thông tin giao hàng</a>
                         </li>
                         <li class="breadcrumb-item">
                             Phương thức thanh toán
@@ -67,7 +80,7 @@
                                         <div class="radio-wrapper content-box-row">
                                             <label for="" class="two-page">
                                                 <div class="radio-input payment-method-checkbox">
-                                                    <input name="checkoutMethod" type="radio" class="input-radio" checked>
+                                                    <input name="checkoutMethod" type="radio" class="input-radio" value="online" checked>
                                                 </div>
                                                 <div class="radio-content-input">
                                                     <img src="img/other.svg" alt="" class="main-img">
@@ -89,7 +102,7 @@
                                         <div class="radio-wrapper content-box-row">
                                             <label for="" class="two-page">
                                                 <div class="radio-input payment-method-checkbox">
-                                                    <input name="checkoutMethod" type="radio" class="input-radio">
+                                                    <input name="checkoutMethod" type="radio" class="input-radio" value="cod">
                                                 </div>
                                                 <div class="radio-content-input">
                                                     <img src="img/cod.svg" alt="" class="main-img">
@@ -109,110 +122,21 @@
                             </div>
                         </div>
                         <div class="step-footer" id="step-footer-checkout">
-                            <form action="" id="checkout_complete">
+                            <form id="checkout_complete">
                                 <button type="submit" class="step-footer-continue-btn btn">
                                     <span class="btn-content">Hoàn tất đơn hàng</span>
                                 </button>
                             </form>
-                            <a href="" class="step-footer-previous-link">Giỏ hàng</a>
+                            <a href="" class="step-footer-previous-link">Thông tin đặt hàng</a>
                         </div>
                     </div>
                 </div>
                 <div class="main-footer footer-powered-by">Powered by HoanhNgjp</div>
             </div>
             <div class="checkout-sidebar">
-                <div class="sidebar-content">
-                    <div class="order-summary-sections">
-                        <!--------------------------------------------LIST-PRODUCTS----------------------------------------------------->
-                        <div class="order-summary-section order-summary-section-product-list">
-                            <table class="product-table">
-                                <tbody>
-                                    <tr class="product">
-                                        <td class="product-image">
-                                            <div class="product-thumbnail">
-                                                <div class="product-thumbnail-wrapper">
-                                                    <img src="img/z5318296110521_e0b7af2bd2dec430e27eaec3182c8556_a0494c20693944b78f601daecd358036_master.webp" alt="" class="product-thmbnial-image">
-                                                </div>
-                                            </div>
-                                        </td>
-                                        <td class="product-description">
-                                            <span class="product-description-name order-summary-emphasis">Kẹp Tóc Hoa Len</span>
-                                            <span class="product-description-variant order-summary-small-text">Kem</span>
-                                        </td>
-                                        <td class="product-quantity">1</td>
-                                        <td class="product-price">
-                                            <span class="order-summary-emphasis">45,000đ</span>
-                                        </td>
-                                    </tr>
-                                    <tr class="product">
-                                        <td class="product-image">
-                                            <div class="product-thumbnail">
-                                                <div class="product-thumbnail-wrapper">
-                                                    <img src="img/z5318296110521_e0b7af2bd2dec430e27eaec3182c8556_a0494c20693944b78f601daecd358036_master.webp" alt="" class="product-thmbnial-image">
-                                                </div>
-                                            </div>
-                                        </td>
-                                        <td class="product-description">
-                                            <span class="product-description-name order-summary-emphasis">Kẹp Tóc Hoa Len</span>
-                                            <span class="product-description-varient">Kem</span>
-                                        </td>
-                                        <td class="product-quantity">1</td>
-                                        <td class="product-price">
-                                            <span class="order-summary-emphasis">45,000đ</span>
-                                        </td>
-                                    </tr>
-                                    <tr class="product">
-                                        <td class="product-image">
-                                            <div class="product-thumbnail">
-                                                <div class="product-thumbnail-wrapper">
-                                                    <img src="img/z5318296110521_e0b7af2bd2dec430e27eaec3182c8556_a0494c20693944b78f601daecd358036_master.webp" alt="" class="product-thmbnial-image">
-                                                </div>
-                                            </div>
-                                        </td>
-                                        <td class="product-description">
-                                            <span class="product-description-name order-summary-emphasis">Kẹp Tóc Hoa Len</span>
-                                            <span class="product-description-varient">Kem</span>
-                                        </td>
-                                        <td class="product-quantity">1</td>
-                                        <td class="product-price">
-                                            <span class="order-summary-emphasis">45,000đ</span>
-                                        </td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </div>
-                        <!--------------------------------------------TOTAL-LINES----------------------------------------------------->
-                        <div class="order-summary-section order-summary-section-total-lines payment-line">
-                            <table class="total-line-table">
-                                <tbody>
-                                    <tr class="total-line total-line-subtotal">
-                                        <td class="total-line-name">Tạm tính</td>
-                                        <td class="total-line-price">
-                                            <span class="order-summary-emphasis">480,000đ</span>
-                                        </td>
-                                    </tr>
-                                    <tr class="total-line total-line-shipping">
-                                        <td class="total-line-name">Phí vận chuyển</td>
-                                        <td class="total-line-price">
-                                            <span class="order-summary-emphasis">Miễn phí</span>
-                                        </td>
-                                    </tr>
-                                </tbody>
-                                <tfoot class="total-line-table-footer">
-                                    <tr class="total-line">
-                                        <td class="total-line-name payment-due-label">
-                                            <span class="payment-due-label-total">Tổng cộng</span>
-                                        </td>
-                                        <td class="total-line-name payment-due">
-                                            <span class="payment-due-currency">VND</span>
-                                            <span class="payment-due-price">480,000đ</span>
-                                        </td>
-                                    </tr>
-                                </tfoot>
-                            </table>
-                        </div>
-                    </div>
-                </div>
+                <?php 
+                    require_once './template/sidebar-content.php';
+                 ?>    
             </div>
 
         </div>

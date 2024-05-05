@@ -1,5 +1,7 @@
 <?php
-    session_start();
+    if (session_status() === PHP_SESSION_NONE) {
+        session_start();
+    }   
     /*if ($_SESSION['logged'] && $_SESSION['email'] && $_SESSION['fullname'] && $_SESSION['addresses']) {
         echo $_SESSION['logged'];
         echo '<br>';
@@ -106,7 +108,7 @@
                                                             echo '<a href="">'. $row['bill_id'] .'</a>';
                                                         echo '</td>';
                                                         echo '<td class="text-center">';
-                                                            echo '<span>1'. date("d/m/Y", strtotime($row['date_created'])) .'</span>';
+                                                            echo '<span>'. date("d/m/Y", strtotime($row['date_created'])) .'</span>';
                                                         echo '</td>';
                                                         echo '<td class="text-center">';
                                                             echo '<span class="total-money">'.number_format($row['total_amount'], 0, ',', '.') .'₫</span>';

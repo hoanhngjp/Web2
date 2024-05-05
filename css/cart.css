@@ -253,6 +253,11 @@ table.table-cart tr td.item .variant {
     border-left: none;
 }
 
+table.table-cart a {
+    color: #2a5f4b;
+    font-weight: bold;
+}
+
 table.table-cart tr td.item .price {
     margin: 0;
     float: right;

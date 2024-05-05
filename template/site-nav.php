@@ -1,3 +1,9 @@
+<?php
+    if (session_status() === PHP_SESSION_NONE) {
+        session_start();
+    }
+    $total_price = 0;
+?>
 <div id="site-nav" class="site-nav">
         <div id="site-cart" class="site-nav-container">
             <div class="site-nav-container-last">
@@ -5,78 +11,48 @@
                 <div class="cart-view">
                     <table id="cart-inside" class="">
                         <tbody>
-                            <tr class="item-in-cart">
-                                <td class="img">
-                                    <a href="">
-                                        <img src="img/pro-in-cart-demo.jpg" alt="">
-                                    </a>
-                                </td>
-                                <td>
-                                    <a class="pro-title-cart" href="">Ví Vải Hoa</a>
-                                    <span class="variant"></span>
-                                    <span class="pro-quantity-cart">1</span>
-                                    <span class="pro-price-cart">150,000đ</span>
-                                    <span class="remove-in-cart">
-                                        <a href="">
-                                            <ion-icon name="close-outline"></ion-icon>                                        
-                                        </a>
-                                    </span>
-                                </td>
-                            </tr>
-                            <tr class="item-in-cart">
-                                <td class="img">
-                                    <a href="">
-                                        <img src="img/pro-in-cart-demo.jpg" alt="">
-                                    </a>
-                                </td>
-                                <td>
-                                    <a class="pro-title-cart" href="">Ví Vải Hoa</a>
-                                    <span class="variant"></span>
-                                    <span class="pro-quantity-cart">1</span>
-                                    <span class="pro-price-cart">150,000đ</span>
-                                    <span class="remove-in-cart">
-                                        <a href="">
-                                            <ion-icon name="close-outline"></ion-icon>                                        
-                                        </a>
-                                    </span>
-                                </td>
-                            </tr>
-                            <tr class="item-in-cart">
-                                <td class="img">
-                                    <a href="">
-                                        <img src="img/pro-in-cart-demo.jpg" alt="">
-                                    </a>
-                                </td>
-                                <td>
-                                    <a class="pro-title-cart" href="">Ví Vải Hoa</a>
-                                    <span class="variant"></span>
-                                    <span class="pro-quantity-cart">1</span>
-                                    <span class="pro-price-cart">150,000đ</span>
-                                    <span class="remove-in-cart">
-                                        <a href="">
-                                            <ion-icon name="close-outline"></ion-icon>                                        
-                                        </a>
-                                    </span>
-                                </td>
-                            </tr>
-                            <tr class="item-in-cart">
-                                <td class="img">
-                                    <a href="">
-                                        <img src="img/pro-in-cart-demo.jpg" alt="">
-                                    </a>
-                                </td>
-                                <td>
-                                    <a class="pro-title-cart" href="">Ví Vải Hoa</a>
-                                    <span class="variant"></span>
-                                    <span class="pro-quantity-cart">1</span>
-                                    <span class="pro-price-cart">150,000đ</span>
-                                    <span class="remove-in-cart">
-                                        <a href="">
-                                            <ion-icon name="close-outline"></ion-icon>                                        
-                                        </a>
-                                    </span>
-                                </td>
-                            </tr>
+                            <?php
+                            if (!isset($_SESSION['cart']) || count($_SESSION['cart']) == 0 ) {
+                                echo '<tr>Hiện chưa có sản phẩm nào</tr>';
+                            }
+                            else {
+                                if (isset($_SESSION['cart']) && count($_SESSION['cart']) > 0) {
+                                    foreach ($_SESSION['cart'] as $product_id => $quantity) {
+
+                                        $query = "SELECT p.*, pi.img_name 
+                                                    FROM Product p 
+                                                    LEFT JOIN `Product-Images` pi ON p.product_id = pi.id_product 
+                                                    WHERE p.product_id = $product_id 
+                                                    LIMIT 1";
+                                        $result = mysqli_query($conn, $query);
+
+                                        if ($result) {
+                                            while ($row = mysqli_fetch_assoc($result)) {
+                                                $total_price += $row['product_price'] * $quantity;
+                                                echo '<tr class="item-in-cart">';
+                                                        echo '<td class="img">';
+                                                            echo '<a href="">';
+                                                                echo '<img src="img/prdImg/' . $row['img_name'] . '" alt="' . $row['product_name'] . '">';
+                                                            echo '</a>';
+                                                        echo '</td>';
+                                                        echo '<td>';
+                                                            echo '<a class="pro-title-cart" href="./product.php?product_id='. $row['product_id'] .'">' . $row['product_name'] . '</a>';
+                                                            echo '<span class="variant"></span>';
+                                                            echo '<span class="pro-quantity-cart">' . $quantity . '</span>';
+                                                            echo '<span class="pro-price-cart">' . number_format($row['product_price'], 0, ',', '.') . '₫</span>';
+                                                            echo '<span class="remove-in-cart">';
+                                                                echo '<a href="#" class="remove-from-cart" data-product-id="'. $product_id .'">';
+                                                                    echo '<ion-icon name="close-outline"></ion-icon>';
+                                                                echo '</a>';
+                                                            echo '</span>';
+                                                        echo '</td>';
+                                                echo '</tr>';                                          
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                            ?>
                         </tbody>
                     </table>
                     <span class="line"></span>
@@ -84,22 +60,47 @@
                         <tbody>
                             <tr>
                                 <td class="text-left" style="font-size: 14px;">TỔNG TIỀN: </td>
-                                <td class="text-right" id="total-in-cart" style="font-size: 14px;">600,000đ</td>
+                                <td class="text-right" id="total-in-cart" style="font-size: 14px;"><?php echo number_format($total_price, 0, ',', '.').'₫'; ?></td>
                             </tr>
                             <tr>
                                 <td>
-                                    <a href="">
+                                    <a href="./cart.php">
                                         <button>XEM GIỎ HÀNG</button>
                                     </a>
                                 </td>
                                 <td>
-                                    <a href="">
+                                    <a href="./orderinfo.php">
                                         <button>THANH TOÁN</button>
                                     </a>
                                 </td>
                             </tr>
                         </tbody>
                     </table>
+                    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+                    <script>
+                                $(document).ready(function(){
+                                    // Xử lý sự kiện click cho nút "Xóa"
+                                    $('.remove-from-cart').click(function(e){
+                                        e.preventDefault(); // Ngăn chặn hành động mặc định của thẻ <a>
+
+                                        var productId = $(this).data('product-id');
+
+                                        // Gửi yêu cầu xóa sản phẩm thông qua Ajax
+                                        $.ajax({
+                                            url: 'function/remove_from_cart.php',
+                                            type: 'post',
+                                            data: {product_id: productId},
+                                            success:function(response){
+                                                // Cập nhật lại tổng tiền sau khi xóa sản phẩm
+                                                $('#total-in-cart').html(response);
+                                                // Cập nhật lại giỏ hàng sau khi xóa sản phẩm
+                                                $('.cart-view').html(response);
+                                                location.reload();
+                                            }
+                                        });
+                                    });
+                                });
+                            </script>
                 </div>
             </div>
         </div>
