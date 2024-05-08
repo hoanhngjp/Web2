@@ -4,13 +4,6 @@
     }
     require_once "./function/db_connect.php";
     $conn = connectDatabase();
-    echo $_SESSION['billing_address_full_name'];
-    echo $_SESSION['billing_address_phone'];
-    echo $_SESSION['billing_address_address'];
-    echo $_SESSION['bill_note'];
-    echo $_SESSION['total_price'];
-    echo $_SESSION['checkoutMethod']
-
 ?>
 <!DOCTYPE html>
 <html lang="en">

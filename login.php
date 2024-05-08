@@ -42,6 +42,11 @@
                                 echo '<span class="show-error" id="error-all" style="display: block;">*Thông tin đăng nhập không hợp lệ<br>Mời bạn kiểm tra lại</span>';
                             echo '</div>';
                         }
+                        if (isset($_GET['block'])) {
+                            echo '<div class="errors-wrap">';
+                                echo '<span class="show-error" id="error-all" style="display: block;">*Tài khoản của bạn đã bị khóa<br>Vui lòng liên hệ admin để được hỗ trợ</span>';
+                            echo '</div>';
+                        }
                     ?>  
                             
                         <div class="input-wrap">
@@ -61,7 +66,7 @@
                                 <button class="sign-in-btn" type="submit" value="login">ĐĂNG NHẬP</button>
                             </div>
                             <div class="reg-pass">
-                                <a href="">Quên mật khẩu?</a>
+                                <a href="#">Quên mật khẩu?</a>
                                 <br>
                                 hoặc
                                 <a href="register.php">Đăng ký</a>

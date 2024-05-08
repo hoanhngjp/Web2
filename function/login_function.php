@@ -11,7 +11,7 @@
         $password = $_POST['password'];
 
         //Truy vấn cơ sở dữ liệu để lấy mật khẩu được mã hóa
-        $query = "SELECT user_password FROM User WHERE user_email = '{$email}'";
+        $query = "SELECT user_password, user_isActive FROM User WHERE user_email = '{$email}'";
         $result= mysqli_query($conn, $query);
 
         if ($result->num_rows == 1) {
@@ -62,6 +62,9 @@
             else {
                 header("Location: ../login.php?fail=true");
             }
+        }
+        else {
+            header("Location: ../login.php?fail=true");
         }
     }
 ?>

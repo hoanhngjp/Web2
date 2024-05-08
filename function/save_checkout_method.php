@@ -13,11 +13,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $checkoutMethod = $_POST['checkoutMethod'];
     $payment_status = "pending";
     $shipping_status = "not fulfilled";
+    $is_confirmed = 0;
     $note = $_SESSION['bill_note'];
 
-    $query_insert_bill = "INSERT INTO Bill (id_user, date_created, total_amount, phone,	shipping_address, checkout_method, payment_status, shipping_status, note
+    $query_insert_bill = "INSERT INTO Bill (id_user, date_created, total_amount, phone,	shipping_address, checkout_method, payment_status, is_confirmed, shipping_status, note
     )
-    VALUES ('$id_user', '$date_created', '$total_amount', '$phone', '$address', '$checkoutMethod', '$payment_status', '$shipping_status', '$note')";
+    VALUES ('$id_user', '$date_created', '$total_amount', '$phone', '$address', '$checkoutMethod', '$payment_status', '$is_confirmed', '$shipping_status', '$note')";
 
     if (mysqli_query($conn, $query_insert_bill)) {
 
@@ -44,7 +45,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     $update_query = "UPDATE Product SET quantity_in_stock = '$new_stock' WHERE product_id = $product_id";
                     mysqli_query($conn, $update_query);
 
-                    header("Location: ../account.php");
+                    unset($_SESSION['total_price']);
+unset($_SESSION['cart']);
+unset($_SESSION['checkoutMethod']);
+unset($_SESSION['billing_address_address']);
+unset($_SESSION['billing_address_phone']);
+unset($_SESSION['billing_address_full_name']);
                 }
 
             }

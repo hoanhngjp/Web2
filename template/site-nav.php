@@ -51,6 +51,7 @@
                                         }
                                     }
                                 }
+                                $_SESSION['total_price'] = $total_price;
                             }
                             ?>
                         </tbody>
@@ -69,9 +70,21 @@
                                     </a>
                                 </td>
                                 <td>
-                                    <a href="./orderinfo.php">
-                                        <button>THANH TOÁN</button>
-                                    </a>
+                                    <?php
+                                        if(isset($_SESSION['logged'])) {
+                                            echo '<a href="./orderinfo.php">';
+                                                echo '<button>THANH TOÁN</button>';
+                                            echo '</a>';
+                                        }
+                                        else {
+                                            echo '<a href="./login.php">';
+                                                echo '<button>THANH TOÁN</button>';
+                                            echo '</a>';
+                                        }
+                                    ?>
+                                    
+                                        
+                                    
                                 </td>
                             </tr>
                         </tbody>

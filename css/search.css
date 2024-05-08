@@ -184,3 +184,98 @@ input#go {
     display: flex;
     justify-content: space-between;
 }
+
+.category-type-wrap, .price-type-wrap {
+
+    padding-top: 20px;
+    margin-bottom: 20px;
+}
+
+.category-type-wrap .fc-title, .price-type-wrap .fc-title {
+    font-weight: bold;
+    font-size: large;
+    
+}
+
+.fc-title {
+    margin-bottom: 20px;
+}
+
+.fc-category-list {
+    display: grid;
+    grid-template-columns: repeat(9, 1fr); /* Mỗi hàng có 9 cột */
+    justify-content: center; /* Căn giữa theo chiều ngang */
+    gap: 20px; /* Khoảng cách giữa các cột */
+    background-color: #f8f8f8;
+    border: 1px solid #f8f8f8;
+    border-radius: 2%;
+}
+
+.fc-category-list li {
+    list-style: none; /* Loại bỏ dấu chấm liên kết */
+    text-align: center; /* Căn giữa nội dung trong mỗi ô */
+    font-size: 14px;
+}
+
+
+.category-ids + label, .price-ids + label {
+    display: block;
+    cursor: pointer;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+
+.fc-price-list{
+    display: flex;
+    justify-content: space-between;
+    background-color: #f8f8f8;
+    border: 1px solid #f8f8f8;
+    border-radius: 2%;
+}
+
+.fc-price-list li {
+    list-style: none;
+    text-align: center; /* Căn giữa nội dung trong mỗi ô */
+    font-size: 14px;
+}
+
+.open-filter-wrap {
+    padding-top: 5%;
+}
+
+.open-filter-block {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+.open-filter-title {
+    padding-bottom: 8px;
+}
+
+#filter-options {
+    display: none;
+    opacity: 0;
+    transition: opacity 0.3s ease; /* Smooth transition for opacity */
+}
+
+#filter-options.active {
+    display: block;
+    opacity: 1;
+}
+
+#close-filter-option {
+    display: none;
+    cursor: pointer;
+}
+
+#show-filter-option .active {
+    display: none;
+}
+
+#show-filter-option {
+    cursor: pointer;
+}

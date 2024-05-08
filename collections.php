@@ -59,12 +59,12 @@
                         // Sử dụng implode để chuyển mảng thành chuỗi để sử dụng trong câu truy vấn
                         $category_ids_string = implode(',', $child_categories);
                         //Truy vấn tất cả sản phẩm trong các category đã lấy được
-                        $query = "SELECT * FROM Product WHERE id_category IN ($category_ids_string) LIMIT $offset, $products_per_page";
+                        $query = "SELECT * FROM Product WHERE is_onSale = 1 AND id_category IN ($category_ids_string) LIMIT $offset, $products_per_page";
                         $category_name = getCategoryName($conn, $category_id);
                         $products = mysqli_query($conn, $query);
                         
                         // Tính tổng số trang
-                        $total_products_query = "SELECT COUNT(*) AS total FROM Product WHERE id_category IN ($category_ids_string)";
+                        $total_products_query = "SELECT COUNT(*) AS total FROM Product WHERE id_category IN ($category_ids_string) AND is_onSale = 1";
                         $total_products_result = mysqli_query($conn, $total_products_query);
                         $total_products_row = mysqli_fetch_assoc($total_products_result);
                         $total_products = $total_products_row['total'];
@@ -77,12 +77,12 @@
                         $offset = ($current_page - 1) * $products_per_page;
 
                         $category_id = 0;
-                        $query = "SELECT * FROM Product LIMIT $offset, $products_per_page";
+                        $query = "SELECT * FROM Product  WHERE is_onSale = 1 LIMIT $offset, $products_per_page";
                         $category_name = 'Tất cả sản phẩm';
                         $products = mysqli_query($conn, $query);
 
                         // Tính tổng số trang
-                        $total_products_query = "SELECT COUNT(*) AS total FROM Product";
+                        $total_products_query = "SELECT COUNT(*) AS total FROM Product  WHERE is_onSale = 1";
                         $total_products_result = mysqli_query($conn, $total_products_query);
                         $total_products_row = mysqli_fetch_assoc($total_products_result);
                         $total_products = $total_products_row['total'];
@@ -147,14 +147,6 @@
                             echo '<h1>' . $category_name . '</h1>';
                         }
                     ?>
-                    </div>
-                    <div class="selection-wrap">
-                        <select name="order" id="">
-                            <option value="priceIncrease">Giá: Tăng dần</option>
-                            <option value="priceDecrease">Giá: Giảm dần</option>
-                            <option value="nameIncrease">Tên: A - Z</option>
-                            <option value="nameDecrease">Tên: Z - A</option>
-                        </select>
                     </div>
                 </div>
                 <?php
