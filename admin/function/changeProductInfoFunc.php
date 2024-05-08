@@ -10,9 +10,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $product_description = $_POST['product_description'];
     $quantity_in_stock = $_POST['quantity_in_stock'];
     $product_id = $_POST['product_id'];
+    $is_onSale = $_POST['is_onSale'];
 
     // Cập nhật thông tin sản phẩm vào cơ sở dữ liệu
-    $query_update_product = "UPDATE Product SET product_name = '$product_name', id_category = '$id_category', product_price = '$product_price', product_description = '$product_description', quantity_in_stock = '$quantity_in_stock' WHERE product_id = $product_id";
+    $query_update_product = "UPDATE Product SET product_name = '$product_name', id_category = '$id_category', product_price = '$product_price', product_description = '$product_description', quantity_in_stock = '$quantity_in_stock', is_onSale = $is_onSale WHERE product_id = $product_id";
     mysqli_query($conn, $query_update_product);
 
     // Xử lý xóa hình ảnh sản phẩm

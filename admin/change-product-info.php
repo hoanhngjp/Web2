@@ -71,16 +71,16 @@ $conn = connectDatabase();
       <!-- Sản phẩm -->
       <div class="khachhang">
         <div class="table-footer">
-          <select name="kieuTimKhachHang">
-            <option value="ten">Tìm theo Mã</option>
-            <option value="email">Tìm theo Tên</option>
+          <select id="kieuTimSanPham" name="kieuTimSanPham">
+            <option value="product_id">Tìm theo Mã</option>
+            <option value="product_name">Tìm theo Tên</option>
           </select>
-          <input type="text" placeholder="Tìm kiếm..." onkeyup="timKiemNguoiDung(this)">
-          <button onclick="locDonHangTheoKhoangNgay()"><i class="fa fa-search"></i> Tìm</button>
+          <input id="tukhoa" type="text" placeholder="Tìm kiếm..." onkeyup="timKiemSanPham(this)">
+          <button onclick="timKiemSanPham()"><i class="fa fa-search"></i> Tìm</button>
         </div>
       </div>
 
-      <div class="wrap-table">
+      <div class="wrap-table" id="resultProduct">
         <table id="userTable">
           <thead>
             <tr>
@@ -115,10 +115,8 @@ $conn = connectDatabase();
             $query_product = "SELECT * FROM Product Limit $start, $limit";
             $result_query_product = mysqli_query($conn, $query_product);
 
-            $stt = 0;
             if ($result_query_product) {
               while ($row = $result_query_product->fetch_assoc()) {
-                $stt++;
                 echo '<form action="./product-info.php" method="GET">';
                 echo '<tr>';
                 echo '<td>' . $row['product_id'] . '</td>';
@@ -222,6 +220,26 @@ $conn = connectDatabase();
     <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
     <script src="dist/js/pages/dashboard.js"></script>
     <script src="js/admin.js"></script>
+    <script>
+      function timKiemSanPham() {
+        var tuKhoa = document.getElementById("tukhoa").value;
+        var kieuTimSanPham = document.getElementById("kieuTimSanPham").value;
+
+        // Gửi dữ liệu tìm kiếm lên máy chủ bằng Ajax
+        $.ajax({
+          type: "POST",
+          url: "./function/timkiemsanpham.php", // Thay đổi đường dẫn đến tập tin PHP xử lý tìm kiếm
+          data: {
+            tuKhoa: tuKhoa,
+            kieuTimSanPham: kieuTimSanPham
+          },
+          success: function(response) {
+            // Hiển thị kết quả tìm kiếm trả về từ máy chủ
+            $("#resultProduct").html(response);
+          }
+        });
+      }
+    </script>
 </body>
 
 </html>

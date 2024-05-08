@@ -127,6 +127,21 @@ $product_id = $_GET['product_id']
                                             <input type="number" class="form-control" id="quantity_in_stock" name="quantity_in_stock" min="0" value="<?php echo $row_product['quantity_in_stock']; ?>" required>
                                         </div>
                                         <div class="form-group">
+                                            <label for="is_onSale">Danh mục</label>
+                                            <select class="form-control" id="is_onSale" name="is_onSale">
+                                                <?php
+                                                    if ($row_product['is_onSale'] == 1) {
+                                                        echo '<option selected value="1">Đang bán</option>';
+                                                        echo '<option  value="0">Ẩn</option>';
+                                                    }
+                                                    else {
+                                                        echo '<option  value="1">Đang bán</option>';
+                                                        echo '<option selected  value="0">Ẩn</option>';
+                                                    }
+                                                ?>
+                                            </select>
+                                        </div>
+                                        <div class="form-group">
                                             <label for="product_images">Hình ảnh sản phẩm</label>
                                             <div id="image_inputs">
                                                 <div class="image-input">
