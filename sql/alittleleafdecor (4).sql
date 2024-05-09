@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 09, 2024 at 12:34 AM
+-- Generation Time: May 09, 2024 at 04:04 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -97,9 +97,9 @@ CREATE TABLE `bill` (
   `phone` text NOT NULL,
   `shipping_address` text NOT NULL,
   `checkout_method` enum('online','cod') NOT NULL,
-  `payment_status` enum('pending','paid	') NOT NULL,
+  `payment_status` enum('pending','paid') NOT NULL,
   `is_confirmed` int(11) NOT NULL,
-  `shipping_status` enum('fulfilled','not fulfilled') NOT NULL,
+  `shipping_status` enum('fulfilled','not_fulfilled') NOT NULL,
   `note` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
@@ -108,20 +108,20 @@ CREATE TABLE `bill` (
 --
 
 INSERT INTO `bill` (`bill_id`, `id_user`, `date_created`, `total_amount`, `phone`, `shipping_address`, `checkout_method`, `payment_status`, `is_confirmed`, `shipping_status`, `note`) VALUES
-(1, 3, '2024-05-05', 0, '0937029984', 'Địa chỉ teest 2', 'online', '', 0, 'fulfilled', ''),
-(2, 3, '2024-05-05', 0, '0937029984', 'Địa chỉ teest 2', 'online', '', 0, 'fulfilled', ''),
-(3, 3, '2024-05-05', 2755000, '0832963381', '439/41 Hồ Học Lãm, Phường An Lạc, Quận Bình Tân, Thành phố Hồ Chí Minh', 'online', 'pending', 0, 'not fulfilled', ''),
-(4, 3, '2024-05-05', 2755000, '0832963381', '439/41 Hồ Học Lãm, Phường An Lạc, Quận Bình Tân, Thành phố Hồ Chí Minh', 'online', 'pending', 0, 'not fulfilled', ''),
-(5, 3, '2024-05-05', 2755000, '0937029984', 'Địa chỉ teest 2', 'cod', 'pending', 0, 'not fulfilled', ''),
-(6, 3, '2024-05-07', 890000, '0832963381', '439/41 Hồ Học Lãm, Phường An Lạc, Quận Bình Tân, Thành phố Hồ Chí Minh', 'online', 'pending', 0, 'not fulfilled', ''),
-(7, 12, '2024-05-08', 2175000, '0123456789', 'Địa chỉ Test 9', 'cod', 'pending', 0, 'not fulfilled', ''),
-(8, 12, '2024-05-08', 3885000, '0123456789', 'Địa chỉ Test 9', 'cod', 'pending', 0, 'not fulfilled', ''),
-(9, 14, '2024-05-08', 2995000, '0388716115', 'Xã An Tây, Thị xã Bến Cát, Bình Dương', 'cod', 'pending', 0, 'not fulfilled', ''),
-(10, 14, '2024-05-08', 3105000, '0388716115', 'Xã An Tây, Thị xã Bến Cát, Bình Dương', 'cod', 'pending', 0, 'not fulfilled', ''),
-(11, 15, '2024-05-08', 5125000, '0803012564', 'Phường Hoà Thuận, Thành phố Cao Lãnh, Đồng Tháp', 'cod', 'pending', 0, 'not fulfilled', ''),
-(12, 17, '2024-05-08', 1235000, '0908112234', 'Xã Đông Thành, Thị xã Bình Minh, Vĩnh Long', 'online', 'pending', 0, 'not fulfilled', ''),
-(13, 21, '2024-05-08', 930000, '0902115568', 'Phường Bình Minh, Thành phố Lào Cai, Lào Cai', 'online', 'pending', 0, 'not fulfilled', ''),
-(14, 23, '2024-05-08', 1240000, '0123456789', 'Xã Xuân Mỹ, Huyện Cẩm Mỹ, Đồng Nai', 'cod', 'pending', 0, 'not fulfilled', '');
+(1, 3, '2024-05-05', 0, '0937029984', 'Địa chỉ teest 2', 'online', 'paid', 0, 'not_fulfilled', ''),
+(2, 3, '2024-05-05', 0, '0937029984', 'Địa chỉ teest 2', 'online', 'paid', 0, 'not_fulfilled', ''),
+(3, 3, '2024-05-05', 2755000, '0832963381', '439/41 Hồ Học Lãm, Phường An Lạc, Quận Bình Tân, Thành phố Hồ Chí Minh', 'online', 'pending', 0, 'not_fulfilled', ''),
+(4, 3, '2024-05-05', 2755000, '0832963381', '439/41 Hồ Học Lãm, Phường An Lạc, Quận Bình Tân, Thành phố Hồ Chí Minh', 'online', 'pending', 0, 'not_fulfilled', ''),
+(5, 3, '2024-05-05', 2755000, '0937029984', 'Địa chỉ teest 2', 'cod', 'paid', 0, 'not_fulfilled', ''),
+(6, 3, '2024-05-07', 890000, '0832963381', '439/41 Hồ Học Lãm, Phường An Lạc, Quận Bình Tân, Thành phố Hồ Chí Minh', 'online', 'pending', 0, 'not_fulfilled', ''),
+(7, 12, '2024-05-08', 2175000, '0123456789', 'Địa chỉ Test 9', 'cod', 'pending', 0, 'not_fulfilled', ''),
+(8, 12, '2024-05-08', 3885000, '0123456789', 'Địa chỉ Test 9', 'cod', 'pending', 0, 'not_fulfilled', ''),
+(9, 14, '2024-05-08', 2995000, '0388716115', 'Xã An Tây, Thị xã Bến Cát, Bình Dương', 'cod', 'pending', 0, 'not_fulfilled', ''),
+(10, 14, '2024-05-08', 3105000, '0388716115', 'Xã An Tây, Thị xã Bến Cát, Bình Dương', 'cod', 'pending', 0, 'not_fulfilled', ''),
+(11, 15, '2024-05-08', 5125000, '0803012564', 'Phường Hoà Thuận, Thành phố Cao Lãnh, Đồng Tháp', 'cod', 'pending', 0, 'not_fulfilled', ''),
+(12, 17, '2024-05-08', 1235000, '0908112234', 'Xã Đông Thành, Thị xã Bình Minh, Vĩnh Long', 'online', 'pending', 0, 'not_fulfilled', ''),
+(13, 21, '2024-05-08', 930000, '0902115568', 'Phường Bình Minh, Thành phố Lào Cai, Lào Cai', 'online', 'pending', 0, 'not_fulfilled', ''),
+(14, 23, '2024-05-08', 1240000, '0123456789', 'Xã Xuân Mỹ, Huyện Cẩm Mỹ, Đồng Nai', 'cod', 'pending', 0, 'not_fulfilled', '');
 
 -- --------------------------------------------------------
 
@@ -266,7 +266,7 @@ CREATE TABLE `product` (
 --
 
 INSERT INTO `product` (`product_id`, `id_category`, `product_name`, `product_price`, `product_description`, `quantity_in_stock`, `is_onSale`) VALUES
-(1, 9, 'Ấm Tráng Men Mickey', 545000, '', 98, 1),
+(1, 9, 'Ấm Tráng Men Mickey', 545000, '                                                                                            ', 98, 1),
 (2, 9, 'Ấm Tráng Men Daisy', 740000, 'Kích thước\n\r\n- Đường kính miệng: 8.5cm\n\r\n- Đường kính đáy: 12cm\n\r\n- Cao: 12 cm\n\r\n- Dung tích: 1.5L\n\r\n- Trọng lượng:1kg\n', 94, 1),
 (3, 9, 'Bếp Nướng Cồn Tròn', 345000, '- Chất liệu: Hợp kim nhôm, gỗ sồi\n\r\n\n\r\n- Kích thước: \n\r\n\n\r\n+ Nhỏ: 16 x 10 cm (đường kính x chiều cao)\n\r\n\n\r\n+ Lớn: 21 x 10 cm (đường kính x chiều cao)\n', 97, 1),
 (4, 9, 'Bếp Picnic Bag', 1370000, 'Bếp dễ lắp đặt, dễ sử dụng và dễ vệ sinh.\n\r\n\n\r\nBếp sử dụng than\n\r\n\n\r\nĐược làm bằng thép chất lượng và lưới thép mạ crôm, không gỉ, không ăn mòn, bền.\n\r\n\n\r\nKích thước nhỏ gọn, tiện dụng\n\r\n\n\r\nKích thước: xem hình ảnh để nhìn rõ kích thước\n', 94, 1),
