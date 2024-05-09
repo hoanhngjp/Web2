@@ -126,3 +126,4 @@ if ($result_query_bill) {
     }
     echo '</div>';
 }
+?>

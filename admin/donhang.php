@@ -76,7 +76,6 @@ $conn = connectDatabase();
 
 
       <div class="table-footer">
-        <form action="">
           Từ ngày: <input type="date" id="fromDate">
           Đến ngày: <input type="date" id="toDate">
           <button onclick="timTheoNgay()"><i class="fa fa-search"></i>Tìm theo ngày</button>
@@ -100,7 +99,6 @@ $conn = connectDatabase();
           </select>
 
         </div>
-        </form>
         <div>
           <select id="kieuTimDonHang" name="kieuTimDonHang">
             <option value="bill_id">Tìm theo Mã đơn</option>
