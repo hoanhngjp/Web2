@@ -79,21 +79,22 @@ $conn = connectDatabase();
         <form action="">
           Từ ngày: <input type="date" id="fromDate">
           Đến ngày: <input type="date" id="toDate">
+          <button onclick="timTheoNgay()"><i class="fa fa-search"></i>Tìm theo ngày</button>
           <div>
-          <select name="payment_status" id="payment_status">
-            <option value="">Trạng thái thanh toán</option>
+          <select name="payment_status" id="payment_status" onchange="timKiemDonHangTheoTrangThaiThanhToan()">
+            <option disabled selected>Trạng thái thanh toán</option>
             <option value="pending">Đang chờ</option>
             <option value="paid">Đã thanh toán</option>
           </select>
 
-          <select name="is_confirmed" id="is_confirmed">
-            <option value="">Tình trạng đơn hàng</option>
+          <select name="is_confirmed" id="is_confirmed" onchange="timKiemDonHangTheoTinhTrangDon()">
+            <option disabled selected>Tình trạng đơn hàng</option>
             <option value="1">Đã xác nhận</option>
             <option value="0">Chưa xác nhận</option>
           </select>
 
-          <select name="shipping_status" id="shipping_status">
-            <option value="">Trạng thái giao hàng</option>
+          <select name="shipping_status" id="shipping_status" onchange="timKiemDonHangTheoTrangThaiGiaoHang()">
+            <option disabled selected>Trạng thái giao hàng</option>
             <option value="fulfilled">Đã giao hàng</option>
             <option value="not_fulfilled">Chưa giao hàng</option>
           </select>
@@ -101,12 +102,11 @@ $conn = connectDatabase();
         </div>
         </form>
         <div>
-          <select name="kieuTimDonHang">
-            <option value="ma">Tìm theo Mã đơn</option>
-            <option value="khachhang">Tìm theo Tên khách hàng</option>
+          <select id="kieuTimDonHang" name="kieuTimDonHang">
+            <option value="bill_id">Tìm theo Mã đơn</option>
+            <option value="bill_fullname">Tìm theo Tên khách hàng</option>
           </select>
-          <input type="text" placeholder="Tìm kiếm..." onkeyup="timKiemDonHang(this)">
-          <button onclick="locDonHangTheoKhoangNgay()"><i class="fa fa-search"></i> Tìm</button>
+          <input id="tuKhoa" type="text" placeholder="Tìm kiếm..." onkeyup="timKiemDonHang(this)">
         </div>
 
         
@@ -115,10 +115,10 @@ $conn = connectDatabase();
       </div>
 
       <!-- Đơn Hàng -->
-      <div class="wrap-table">
+        <div class="wrap-table" id="resultBill">
         <table id="userTable" class="table-header">
           <thead>
-            <tr>
+              <tr>
               <th>Bill ID</th>
               <th>Tên khách hàng</th>
               <th>Ngày tạo đơn</th>
@@ -229,7 +229,7 @@ $conn = connectDatabase();
                 echo '<td>' . $row['checkout_method'] . '</td>';
                 echo '<td>';
                 echo '<select name="payment_status" >';
-                if ($row['payment_status'] == "pending") {
+                if ($row['payment_status'] === "pending") {
                   echo '<option value="pending" selected>Đang chờ</option>';
                   echo '<option value="paid">Đã thanh toán</option>';
                 } else {
@@ -253,10 +253,10 @@ $conn = connectDatabase();
                 echo '<select name="shipping_status" >';
                 if ($row['shipping_status'] == "fulfilled") {
                   echo '<option value="fulfilled" selected>Đã giao hàng</option>';
-                  echo '<option value="not fulfilled">Chưa giao hàng</option>';
+                  echo '<option value="not_fulfilled">Chưa giao hàng</option>';
                 } else {
                   echo '<option value="fulfilled">Đã giao hàng</option>';
-                  echo '<option value="fulfilled" selected>Chưa giao hàng</option>';
+                  echo '<option value="not_fulfilled" selected>Chưa giao hàng</option>';
                 }
                 echo '</select>';
                 echo '</td>';
@@ -346,26 +346,92 @@ $conn = connectDatabase();
     <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
     <script src="dist/js/pages/dashboard.js"></script>
     <script>
-      // Lấy các select box
-      var paymentStatusSelect = document.getElementById('payment_status');
-      var isConfirmedSelect = document.getElementById('is_confirmed');
-      var shippingStatusSelect = document.getElementById('shipping_status');
+      function timKiemDonHang() {
+        var tuKhoa = document.getElementById("tuKhoa").value;
+        var kieuTimDonHang = document.getElementById("kieuTimDonHang").value;
 
-      // Thêm sự kiện change cho các select box
-      paymentStatusSelect.addEventListener('change', filterOrders);
-      isConfirmedSelect.addEventListener('change', filterOrders);
-      shippingStatusSelect.addEventListener('change', filterOrders);
-
-      // Hàm xử lý khi select box thay đổi
-      function filterOrders() {
-        // Lấy giá trị từ các select box
-        var paymentStatus = paymentStatusSelect.value;
-        var isConfirmed = isConfirmedSelect.value;
-        var shippingStatus = shippingStatusSelect.value;
-
-        // Chuyển hướng trang với các tham số truy vấn tương ứng
-        window.location.href = 'donhang.php?payment_status=' + paymentStatus + '&is_confirmed=' + isConfirmed + '&shipping_status=' + shippingStatus;
+        // Gửi dữ liệu tìm kiếm lên máy chủ bằng Ajax
+        $.ajax({
+          type: "POST",
+          url: "./function/timkiemdonhang.php", // Thay đổi đường dẫn đến tập tin PHP xử lý tìm kiếm
+          data: {
+            tuKhoa: tuKhoa,
+            kieuTimDonHang: kieuTimDonHang
+          },
+          success: function(response) {
+            // Hiển thị kết quả tìm kiếm trả về từ máy chủ
+            $("#resultBill").html(response);
+          }
+        });
       }
+
+      function timKiemDonHangTheoTrangThaiThanhToan() {
+        var trangThaiDonHang = document.getElementById("payment_status").value;
+      
+        $.ajax({
+          type: "POST",
+          url: "./function/timkiemdonhangtheotrangthaidon.php", // Thay đổi đường dẫn đến tập tin PHP xử lý tìm kiếm
+          data: {
+            trangThaiDonHang: trangThaiDonHang
+          },
+          success: function(response) {
+            // Hiển thị kết quả tìm kiếm trả về từ máy chủ
+            $("#resultBill").html(response);
+          }
+        });
+      }
+
+      function timKiemDonHangTheoTinhTrangDon() {
+        var tinhTrangDon = document.getElementById("is_confirmed").value;
+      
+        $.ajax({
+          type: "POST",
+          url: "./function/timkiemdonhangtheotinhtrangdon.php", // Thay đổi đường dẫn đến tập tin PHP xử lý tìm kiếm
+          data: {
+            tinhTrangDon: tinhTrangDon
+          },
+          success: function(response) {
+            // Hiển thị kết quả tìm kiếm trả về từ máy chủ
+            $("#resultBill").html(response);
+          }
+        });
+      }
+
+      function timKiemDonHangTheoTrangThaiGiaoHang() {
+        var trangThaiGiaoHang = document.getElementById("shipping_status").value;
+      
+        $.ajax({
+          type: "POST",
+          url: "./function/timkiemdonhangtheotrangthaigiaohang.php", // Thay đổi đường dẫn đến tập tin PHP xử lý tìm kiếm
+          data: {
+            trangThaiGiaoHang: trangThaiGiaoHang
+          },
+          success: function(response) {
+            // Hiển thị kết quả tìm kiếm trả về từ máy chủ
+            $("#resultBill").html(response);
+          }
+        });
+      }
+
+      function timTheoNgay() {
+        var fromDate = document.getElementById("fromDate").value;
+        var toDate = document.getElementById("toDate").value;
+
+        // Gửi dữ liệu ngày tháng lên máy chủ bằng Ajax
+        $.ajax({
+          type: "POST",
+          url: "./function/timtheongay.php",
+          data: {
+            fromDate: fromDate,
+            toDate: toDate
+          },
+          success: function(response) {
+            // Hiển thị kết quả trả về từ máy chủ
+            $("#resultBill").html(response);
+          }
+        });
+      }
+
     </script>
 
 </body>

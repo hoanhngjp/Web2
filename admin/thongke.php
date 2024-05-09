@@ -228,10 +228,10 @@ $conn = connectDatabase();
                 echo '<select name="shipping_status" >';
                 if ($row['shipping_status'] == "fulfilled") {
                   echo '<option value="fulfilled" selected>Đã giao hàng</option>';
-                  echo '<option value="not fulfilled">Chưa giao hàng</option>';
+                  echo '<option value="not_fulfilled">Chưa giao hàng</option>';
                 } else {
                   echo '<option value="fulfilled">Đã giao hàng</option>';
-                  echo '<option value="fulfilled" selected>Chưa giao hàng</option>';
+                  echo '<option value="not_fulfilled" selected>Chưa giao hàng</option>';
                 }
                 echo '</select>';
                 echo '</td>';

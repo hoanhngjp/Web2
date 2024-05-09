@@ -12,7 +12,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $address = $_SESSION['billing_address_address'];
     $checkoutMethod = $_POST['checkoutMethod'];
     $payment_status = "pending";
-    $shipping_status = "not fulfilled";
+    $shipping_status = "not_fulfilled";
     $is_confirmed = 0;
     $note = $_SESSION['bill_note'];
 
