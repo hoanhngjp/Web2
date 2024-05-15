@@ -24,6 +24,10 @@ if (isset($_POST['fromDate']) && isset($_POST['toDate'])) {
     // Hiển thị thông tin top 5 khách hàng
     while ($row_top_customers = mysqli_fetch_assoc($result_top_customers)) {
         echo '<h2>TOP '. $top++ .': ' . $row_top_customers['user_fullname'] . '</h2>';
+        
+        // Khởi tạo biến tổng tiền cho người dùng hiện tại
+        $total_spent_by_user = 0;
+        
         echo '<table id="userTable" class="table-header">';
         echo '<thead>
         <tr>
@@ -58,7 +62,15 @@ if (isset($_POST['fromDate']) && isset($_POST['toDate'])) {
             echo '</td>';
             echo '</tr>';
             echo '</form>  ';
+            
+            // Cộng dồn tổng tiền của các đơn hàng
+            $total_spent_by_user += $row_order['total_amount'];
         }
+        
+        // Hiển thị tổng tiền của tất cả đơn hàng của người dùng
+        echo '<h3>Tổng tiền: ' . number_format($total_spent_by_user) . '₫</h3>';
+        
         echo '</table>';
     }
 }
+?>
