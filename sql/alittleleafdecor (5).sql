@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 09, 2024 at 04:04 AM
+-- Generation Time: May 15, 2024 at 06:32 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -108,8 +108,6 @@ CREATE TABLE `bill` (
 --
 
 INSERT INTO `bill` (`bill_id`, `id_user`, `date_created`, `total_amount`, `phone`, `shipping_address`, `checkout_method`, `payment_status`, `is_confirmed`, `shipping_status`, `note`) VALUES
-(1, 3, '2024-05-05', 0, '0937029984', 'Địa chỉ teest 2', 'online', 'paid', 0, 'not_fulfilled', ''),
-(2, 3, '2024-05-05', 0, '0937029984', 'Địa chỉ teest 2', 'online', 'paid', 0, 'not_fulfilled', ''),
 (3, 3, '2024-05-05', 2755000, '0832963381', '439/41 Hồ Học Lãm, Phường An Lạc, Quận Bình Tân, Thành phố Hồ Chí Minh', 'online', 'pending', 0, 'not_fulfilled', ''),
 (4, 3, '2024-05-05', 2755000, '0832963381', '439/41 Hồ Học Lãm, Phường An Lạc, Quận Bình Tân, Thành phố Hồ Chí Minh', 'online', 'pending', 0, 'not_fulfilled', ''),
 (5, 3, '2024-05-05', 2755000, '0937029984', 'Địa chỉ teest 2', 'cod', 'paid', 0, 'not_fulfilled', ''),
@@ -143,12 +141,6 @@ CREATE TABLE `bill-detail` (
 --
 
 INSERT INTO `bill-detail` (`bill_detail_id`, `id_bill`, `id_product`, `quantity`, `unit_price`, `total_price`) VALUES
-(1, 1, 2, 1, 740000, 740000),
-(2, 1, 4, 1, 1370000, 1370000),
-(3, 1, 9, 1, 645000, 645000),
-(4, 2, 2, 1, 740000, 740000),
-(5, 2, 4, 1, 1370000, 1370000),
-(6, 2, 9, 1, 645000, 645000),
 (7, 3, 2, 1, 740000, 740000),
 (8, 3, 4, 1, 1370000, 1370000),
 (9, 3, 9, 1, 645000, 645000),

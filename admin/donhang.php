@@ -277,19 +277,19 @@ $conn = connectDatabase();
         </table>
         <div class="pagination">
           <?php if ($page > 1) : ?>
-            <a href="?page=<?php echo ($page - 1); ?>" class="prev">&laquo; Trang trước</a>
+            <a href="./donhang.php?page=<?php echo ($page - 1); ?>" class="prev">&laquo; Trang trước</a>
           <?php endif; ?>
 
           <?php for ($i = 1; $i <= $total_pages; $i++) : ?>
             <?php if ($i == 1 || $i == $total_pages || ($i >= $page - 2 && $i <= $page + 2)) : ?>
-              <a href="?page=<?php echo $i; ?>" class="<?php echo ($page == $i) ? 'active' : ''; ?>"><?php echo $i; ?></a>
+              <a href="./donhang.php?page=<?php echo $i; ?>" class="<?php echo ($page == $i) ? 'active' : ''; ?>"><?php echo $i; ?></a>
             <?php elseif ($i == $page - 3 || $i == $page + 3) : ?>
               <span>...</span>
             <?php endif; ?>
           <?php endfor; ?>
 
           <?php if ($page < $total_pages) : ?>
-            <a href="?page=<?php echo ($page + 1); ?>" class="next">Trang tiếp theo &raquo;</a>
+            <a href="./donhang.php?page=<?php echo ($page + 1); ?>" class="next">Trang tiếp theo &raquo;</a>
           <?php endif; ?>
         </div>
       </div>

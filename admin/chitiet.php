@@ -78,7 +78,7 @@ $conn = connectDatabase();
               <th>STT</th>
               <th>Tên sản phẩm</th>
               <th>Hình ảnh</th>
-              <th>Số lượng sản phẩm</th>
+              <th>Số lượng</th>
               <th>Đơn giá</th>
               <th>Thành tiền</th>
             </tr>

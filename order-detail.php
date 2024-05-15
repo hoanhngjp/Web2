@@ -112,7 +112,7 @@
                                                                             echo '<span>' . number_format($row2['product_price'], 0, ',', '.') . '₫</span>';
                                                                         echo '</p>';
                                                                         echo '<div class="qty-click">';
-                                                                            echo '<input type="text" size="4" min="1" data-price="' . $row2['product_price'] . '" value="' . $row['quantity'] . '" class="item-quantity" data-product-id="'. $product_id .'" disabled> ';
+                                                                            echo '<input type="text" size="4" min="1" data-price="' . $row2['product_price'] . '" value="' . $row['quantity'] . '" class="item-quantity" disabled> ';
                                                                         echo '</div>';
                                                                         echo '<p class="price">';
                                                                             echo '<span class="text">Thành tiền</span>';
