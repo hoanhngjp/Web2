@@ -90,7 +90,7 @@
                                     }
                                     else {
                                 ?>
-                                    <p class="title-detail"> Danh sách đơn hàng mới nhất </p>
+                                    <p class="title-detail"> Danh sách các đơn hàng </p>
                                     <div class="table-wrap">
                                         <table class="table">
                                             <thead>
@@ -99,6 +99,7 @@
                                                 <th class="total text-center">Thành tiền</th>
                                                 <th class="payment-status text-center">Trạng thái thanh toán</th>
                                                 <th class="fulfillment-status text-center">Vận chuyển</th>
+                                                <th class="order-detail text-center">Chi tiết đơn hàng</th>
                                             </thead>
                                             <tbody>
                                             <?php
@@ -119,10 +120,13 @@
                                                         echo '<td class="text-center">';
                                                             echo '<span class="status-'.$row['shipping_status'].'">'.$row['shipping_status'].'</span>';
                                                         echo '</td>';
+                                                        echo '<td class="text-center">';
+                                                            echo '<span class="detail-'.$row['shipping_status'].'"><a href="./order-detail.php?bill-id='. $row['bill_id'] .'">Chi tiết</a></span>';
+                                                        echo '</td>';
                                                     echo '</tr>';
                                                 }
                                             ?>
-
+                                            
                                             </tbody>
                                         </table>
                                     </div>

@@ -50,7 +50,7 @@
                     <div class="nav-header">
                         <ol>
                             <li>
-                                <a href="">
+                                <a href="./home.php">
                                     <span>Trang chủ</span>
                                 </a>
                                 <meta itemprop="position" content="1">
